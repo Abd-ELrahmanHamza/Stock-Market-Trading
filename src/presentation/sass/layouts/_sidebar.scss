@@ -1,0 +1,78 @@
+.sidebar {
+    background-color: $color-white;
+    width: 20%;
+    height: 100vh;
+    padding: 5rem 0 5rem 3rem;
+    display: flex;
+    flex-direction: column;
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__logo-img {
+        width: 5rem;
+        height: 5rem;
+        margin-right: 1.5rem;
+    }
+    &__logo-header {
+        font-size: 3rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    &__nav {
+        flex: 1;
+    }
+
+    &__nav-list {
+        position: relative;
+        list-style: none;
+        margin-top: 3rem;
+        height: 100%;
+    }
+
+    &__nav-item {
+        cursor: pointer;
+        padding: 1rem 0.5rem;
+        text-align: center;
+
+        &:last-child {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        &:hover {
+            background-image: linear-gradient(to right, $color-white, $color-grey-light-1);
+            border-right: 3px solid $color-primary;
+            color: $color-primary;
+        }
+    }
+
+    &__nav-link {
+        &:link,
+        &:visited {
+            color: $color-black;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 1rem 0;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__nav-item:hover &__nav-link {
+        color: $color-primary;
+    }
+
+    &__nav-icon {
+        font-size: 3rem;
+        margin-right: 1.5rem;
+    }
+}
