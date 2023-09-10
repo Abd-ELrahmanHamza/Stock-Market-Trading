@@ -4,6 +4,7 @@ import { IoWalletSharp } from "react-icons/io5";
 import { AiOutlineStock } from "react-icons/ai";
 import { BsBuildingsFill } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
+import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 const Sidebar = () => {
   return (
     <div className="sidebar">
@@ -13,7 +14,15 @@ const Sidebar = () => {
           alt="Logo"
           className="sidebar__logo-img"
         />
-        <h2 className="sidebar__logo-header">Logo</h2>
+        <h2 className="sidebar__logo-text">Logo</h2>
+        <input id="side-toggle" type="checkbox" className="sidebar__checkbox" />
+        <div className="sidebar__nav">asndksadkjsnjkda</div>
+        <label
+          className="btn btn--primary-light btn--small u-margin-left-auto"
+          htmlFor="side-toggle"
+        >
+          <TbLayoutSidebarLeftCollapseFilled className="sidebar__collapse-icon" />
+        </label>
       </div>
       <nav className="sidebar__nav">
         <ul className="sidebar__nav-list">

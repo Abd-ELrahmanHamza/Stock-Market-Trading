@@ -6,10 +6,27 @@
     display: flex;
     flex-direction: column;
 
+    &__checkbox {
+        // display: none;
+    }
+
+    &__checkbox:checked ~ .sidebar__nav {
+        display: none;
+    }
+
     &__logo {
         display: flex;
         align-items: center;
         cursor: pointer;
+        padding-right: 1rem;
+    }
+
+    &__logo-text {
+        font-size: 3rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: $color-primary;
     }
 
     &__logo-img {
@@ -39,7 +56,7 @@
         cursor: pointer;
         padding: 1rem 0.5rem;
         text-align: center;
-
+        transition: all 0.05s;
         &:last-child {
             position: absolute;
             bottom: 0;
@@ -48,8 +65,12 @@
 
         &:hover {
             background-image: linear-gradient(to right, $color-white, $color-grey-light-1);
-            border-right: 3px solid $color-primary;
-            color: $color-primary;
+            border-right: 3px solid $color-primary-light;
+            color: $color-primary-light;
+        }
+
+        &:active {
+            transform: translateY(0.3rem);
         }
     }
 
@@ -68,11 +89,15 @@
     }
 
     &__nav-item:hover &__nav-link {
-        color: $color-primary;
+        color: $color-primary-light;
     }
 
     &__nav-icon {
         font-size: 3rem;
         margin-right: 1.5rem;
+    }
+
+    &__collapse-icon {
+        font-size: 2rem;
     }
 }

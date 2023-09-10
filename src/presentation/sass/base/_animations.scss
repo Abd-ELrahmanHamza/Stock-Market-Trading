@@ -40,3 +40,14 @@
         transform: translateY(0);
     }
 }
+
+@keyframes circle-animation {
+  0% {
+    transform: scale(0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}

@@ -21,7 +21,9 @@
         text-transform: uppercase;
         text-decoration: none;
         padding: 1.5rem 4rem;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 10rem;
         transition: all 0.2s;
         position: relative;
@@ -48,6 +50,14 @@
         }
     }
 
+    &--primary-light {
+        background-color: $color-primary-light;
+        color: $color-white;
+        &::after {
+            background-color: $color-primary-light;
+        }
+    }
+
     &::after {
         content: "";
         display: inline-block;
@@ -67,6 +77,10 @@
         animation-timing-function: ease-out;
         animation-delay: 0.75s;
         animation-fill-mode: backwards;
+    }
+
+    &--small {
+        padding: 1rem 1rem;
     }
 }
 
