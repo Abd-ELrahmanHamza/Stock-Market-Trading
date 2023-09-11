@@ -7,13 +7,26 @@ const StyledCard = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
   padding: theme.spacing(2),
   borderRadius: "1rem",
+  boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+  height: "100%",
+}));
+
+const StyledNoPadCard = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  color: theme.palette.text.secondary,
+  borderRadius: "1rem",
+  boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+  overflow: "hidden",
 }));
 
 interface CardProps {
   children: React.ReactNode;
 }
 const Card = ({ children }: CardProps) => {
-  return <StyledCard elevation={5}>{children}</StyledCard>;
+  return <StyledCard elevation={7}>{children}</StyledCard>;
 };
 
-export default Card;
+const NoPadCard = ({ children }: CardProps) => {
+  return <StyledNoPadCard elevation={7}>{children}</StyledNoPadCard>;
+};
+export { Card, NoPadCard };

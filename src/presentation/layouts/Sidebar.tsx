@@ -42,6 +42,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
+  border: "none",
 }));
 
 const Drawer = styled(MuiDrawer, {
@@ -51,8 +52,7 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
-  "& .MuiList-root": {
-  },
+  "& .MuiList-root": {},
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
@@ -74,12 +74,14 @@ const LogoutList = styled(List)(() => ({
   marginTop: "auto",
 }));
 
-const NavListLink = styled(NavLink)(({ theme }) => ({
-  backgroundColor: theme.palette.common.black,
-  "&.active": {
-    borderRight: `4px solid ${theme.palette.primary.light}`,
+const StyledListItemText = styled(ListItemText)(({ theme }) => ({
+  "& .MuiTypography-root": {
+    fontSize: "1.2rem",
+    fontWeight: 500,
   },
 }));
+
+const StyledListItemButton = styled(ListItemButton)(({ theme }) => ({}));
 
 interface SidebarProps {
   open: boolean;
@@ -99,27 +101,25 @@ const Sidebar = ({ open, toggleDrawer, navigationList }: SidebarProps) => {
           {open ? <ChevronLeftIcon /> : <MenuIcon />}
         </IconButton>
       </DrawerHeader>
-      <Divider />
       <List>
         {navigationList.map(({ text, icon, link }) => (
-          <NavListLink key={text} dest={link}>
+          <NavLink key={text} dest={link}>
             <ListItem disablePadding>
-              <ListItemButton>
+              <StyledListItemButton>
                 <ListItemIcon sx={{ color: "inherit" }}>{icon}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
+                <StyledListItemText primary={text} />
+              </StyledListItemButton>
             </ListItem>
-          </NavListLink>
+          </NavLink>
         ))}
       </List>
-      <Divider />
       <LogoutList>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
               <LogoutIcon />
             </ListItemIcon>
-            <ListItemText primary={"Logout"} />
+            <StyledListItemText primary={"Logout"} />
           </ListItemButton>
         </ListItem>
       </LogoutList>

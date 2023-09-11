@@ -1,4 +1,3 @@
-import { grey } from "@mui/material/colors";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 // Define your custom theme
@@ -8,16 +7,16 @@ const theme = responsiveFontSizes(
       MuiCssBaseline: {
         styleOverrides: {
           body: {
-            backgroundColor: grey[300],
+            backgroundColor: "grey[100]",
           },
         },
       },
     },
     palette: {
       primary: {
-        main: "#0070f3", // Primary Blue
-        light: "#4d94ff", // Light Blue
-        dark: "#0052cc", // Dark Blue
+        main: "#197BBD", // Primary Blue
+        light: "#8cc5ffea", // Light Blue
+        dark: "#256E96", // Dark Blue
       },
       secondary: {
         main: "#00b894", // Green
@@ -38,7 +37,7 @@ const theme = responsiveFontSizes(
       },
       text: {
         primary: "#363636", // Black
-        secondary: "#ffffff", // White
+        secondary: "#363636", // White
       },
     },
     typography: {
@@ -55,7 +54,6 @@ const theme = responsiveFontSizes(
         '"Segoe UI Symbol"',
       ].join(","),
     },
-
   })
 );
 

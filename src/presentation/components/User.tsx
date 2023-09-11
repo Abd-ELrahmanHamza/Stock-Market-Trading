@@ -7,13 +7,16 @@ const UserContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-end",
-  padding: "0.5rem",
-  borderBottom: `1px solid ${theme.palette.divider}`,
+  padding: "0.5rem 0.7rem",
+  backgroundColor: theme.palette.primary.main,
+  borderRadius: "1rem",
+  cursor: "pointer",
+  boxShadow:""
 }));
 
 const UserName = styled(Typography)(({ theme }) => ({
   marginLeft: theme.spacing(2),
-  fontWeight: "bold",
+  color: theme.palette.common.white,
 }));
 
 const UserAvatar = styled(Avatar)(({ theme }) => ({

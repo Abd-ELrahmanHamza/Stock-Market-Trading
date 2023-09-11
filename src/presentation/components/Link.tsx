@@ -24,7 +24,10 @@ const StyledNavLink = styled(ReactRouterDomNavLink)(({ theme }) => ({
   },
 
   "&.active": {
-    color: theme.palette.primary.light,
+    color: theme.palette.primary.main,
+    "& .MuiListItem-root": {
+      borderRight: `0.2rem solid ${theme.palette.primary.main}`,
+    },
   },
 }));
 

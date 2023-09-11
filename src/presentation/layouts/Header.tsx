@@ -1,18 +1,22 @@
-import { Box } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import styled from "@mui/material/styles/styled";
 import User from "../components/User";
 import logo from "../assets/images/logo.svg";
 const HeaderContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "flex-end",
-  padding: theme.spacing(0.7, 1),
-  backgroundColor: theme.palette.common.white,
-  boxShadow: theme.shadows[1],
+  justifyContent: "space-between",
+  padding: "1rem",
+  borderRadius: "0",
 }));
-const Header = () => {
+
+interface HeaderProps {
+  title: string;
+}
+const Header = ({ title }: HeaderProps) => {
   return (
     <HeaderContainer>
+      <Typography variant="h4">{title}</Typography>
       <User source={logo} />
     </HeaderContainer>
   );

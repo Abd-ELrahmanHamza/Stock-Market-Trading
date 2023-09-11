@@ -3,7 +3,7 @@ import Sidebar from "../../layouts/Sidebar";
 import { styled } from "@mui/material";
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "../../features/Header";
+import Header from "../../layouts/Header";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import WalletIcon from "@mui/icons-material/Wallet";
@@ -57,7 +57,7 @@ export default function Investor() {
           navigationList={navigationList}
         />
         <Box component="main" sx={{ width: "100%" }}>
-          <Header />
+          <Header title="Dashboard" />
           <ContentContainer>
             <Outlet></Outlet>
           </ContentContainer>
