@@ -8,6 +8,9 @@ const HeaderContainer = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   padding: "1rem",
   borderRadius: "0",
+  [theme.breakpoints.down("md")]: {
+    flexWrap: "wrap",
+  },
 }));
 
 interface HeaderProps {

@@ -11,29 +11,33 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   marginBottom: theme.spacing(2),
 }));
 
+const StyledCardGrid = styled(Grid)(({ theme }) => ({
+  width: "100%",
+}));
+
 const InvestorDashboard = () => {
   return (
     <Box>
       <StyledGrid container spacing={3} columns={{ sm: 1, md: 4 }}>
         <Grid item xs={1} md={1}>
           <StyledGrid container spacing={8} columns={{ sm: 2, md: 1 }}>
-            <Grid item xs={1} md={1}>
+            <StyledCardGrid item xs={1} md={1}>
               <NoPadCard>
                 <IconGradientCard Icon={wallet} text="200$" sub="Wallet" />
               </NoPadCard>
-            </Grid>
-            <Grid item xs={1} md={1}>
+            </StyledCardGrid>
+            <StyledCardGrid item xs={1} md={1}>
               <NoPadCard>
                 <IconCard Icon={stock} text="250" sub="Stocks" />
               </NoPadCard>
-            </Grid>
+            </StyledCardGrid>
           </StyledGrid>
         </Grid>
-        <Grid item xs={1} md={3}>
+        <StyledCardGrid item xs={1} md={3}>
           <Card>
             <Transactions />
           </Card>
-        </Grid>
+        </StyledCardGrid>
       </StyledGrid>
       <Card>
         <BarChart />

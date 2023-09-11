@@ -11,7 +11,7 @@ const UserContainer = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   borderRadius: "1rem",
   cursor: "pointer",
-  boxShadow:""
+  boxShadow: "",
 }));
 
 const UserName = styled(Typography)(({ theme }) => ({
@@ -22,6 +22,9 @@ const UserName = styled(Typography)(({ theme }) => ({
 const UserAvatar = styled(Avatar)(({ theme }) => ({
   backgroundColor: theme.palette.common.white,
   boxShadow: theme.shadows[2],
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
 }));
 interface UserProps {
   source: string;
@@ -30,9 +33,7 @@ const User = ({ source }: UserProps) => {
   return (
     <UserContainer>
       <UserAvatar alt="Profile Picture" src={source} />
-      <UserName variant="h6">
-        Abdelrahman
-      </UserName>
+      <UserName variant="h6">Abdelrahman</UserName>
     </UserContainer>
   );
 };
