@@ -21,13 +21,24 @@ const theme = responsiveFontSizes(
       },
       secondary: {
         main: "#00b894", // Green
+        light: "#00cec9", // Light Green
+        dark: "#0984e3", // Dark Green
+      },
+      error: {
+        main: "#ff0000", // Red
+        light: "#ff7675", // Light Red
+        dark: "#d63031", // Dark Red
       },
       common: {
-        black: "#000000", // Black
+        black: "#363636", // Black
         white: "#ffffff", // White
       },
       background: {
         default: "#f5f5f5", // Beige
+      },
+      text: {
+        primary: "#363636", // Black
+        secondary: "#ffffff", // White
       },
     },
     typography: {
@@ -44,6 +55,7 @@ const theme = responsiveFontSizes(
         '"Segoe UI Symbol"',
       ].join(","),
     },
+
   })
 );
 

@@ -27,7 +27,7 @@ const User = ({ source }: UserProps) => {
   return (
     <UserContainer>
       <UserAvatar alt="Profile Picture" src={source} />
-      <UserName variant="h6" color="initial">
+      <UserName variant="h6">
         Abdelrahman
       </UserName>
     </UserContainer>

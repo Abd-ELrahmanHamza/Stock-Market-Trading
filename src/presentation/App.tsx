@@ -1,16 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import InvestorDashboard from "./pages/Investor/InvestorDashboard";
+import Investor from "./pages/Investor/Investor";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
+import InvestorDashboard from "./pages/Investor/InvestorDashboard";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <InvestorDashboard />,
+    element: <Investor />,
     children: [
       {
         path: "",
-        element: <div>dash</div>,
+        element: <InvestorDashboard />,
       },
       {
         path: "wallet",

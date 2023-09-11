@@ -9,14 +9,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import LogoutIcon from "@mui/icons-material/Logout";
-import ApartmentIcon from "@mui/icons-material/Apartment";
-import WalletIcon from "@mui/icons-material/Wallet";
-import PaidIcon from "@mui/icons-material/Paid";
 import { NavLink } from "../components/Link";
 import { Constants } from "../theme";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/images/logo.svg";
 
@@ -56,6 +51,8 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
+  "& .MuiList-root": {
+  },
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
@@ -68,7 +65,7 @@ const Drawer = styled(MuiDrawer, {
 
 const Logo = styled("img")(({ theme }) => ({
   width: "50%",
-  height: "auto",
+  height: "100%",
   margin: "auto",
   padding: theme.spacing(0, 1),
 }));
@@ -83,34 +80,17 @@ const NavListLink = styled(NavLink)(({ theme }) => ({
     borderRight: `4px solid ${theme.palette.primary.light}`,
   },
 }));
-const navigationList = [
-  {
-    text: "Dashboard",
-    icon: <InboxIcon />,
-    link: "/",
-  },
-  {
-    text: "Wallet",
-    icon: <WalletIcon />,
-    link: "/wallet",
-  },
-  {
-    text: "Stocks",
-    icon: <PaidIcon />,
-    link: "/stocks",
-  },
-  {
-    text: "Companies",
-    icon: <ApartmentIcon />,
-    link: "/companies",
-  },
-];
 
 interface SidebarProps {
   open: boolean;
   toggleDrawer: () => void;
+  navigationList: {
+    text: string;
+    icon: React.ReactNode;
+    link: string;
+  }[];
 }
-const Sidebar = ({ open, toggleDrawer }: SidebarProps) => {
+const Sidebar = ({ open, toggleDrawer, navigationList }: SidebarProps) => {
   return (
     <Drawer variant="permanent" open={open}>
       <DrawerHeader>
