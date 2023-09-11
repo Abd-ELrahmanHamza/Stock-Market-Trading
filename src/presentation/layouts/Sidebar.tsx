@@ -5,7 +5,6 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -19,6 +18,7 @@ import { NavLink } from "../components/Link";
 import { Constants } from "../theme";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import MenuIcon from "@mui/icons-material/Menu";
+import logo from "../assets/images/logo.svg";
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: Constants.drawerWidth,
@@ -66,7 +66,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-const Logo = styled(AccountBalanceIcon)(({ theme }) => ({
+const Logo = styled("img")(({ theme }) => ({
   width: "50%",
   height: "auto",
   margin: "auto",
@@ -114,7 +114,7 @@ const Sidebar = ({ open, toggleDrawer }: SidebarProps) => {
   return (
     <Drawer variant="permanent" open={open}>
       <DrawerHeader>
-        {open && <Logo />}
+        {open && <Logo alt="Logo" src={logo} />}
         <IconButton onClick={toggleDrawer}>
           {open ? <ChevronLeftIcon /> : <MenuIcon />}
         </IconButton>
