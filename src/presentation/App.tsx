@@ -6,7 +6,8 @@ import InvestorDashboard from "./pages/Investor/InvestorDashboard";
 import InvestorStocks from "./pages/Investor/InvestorStocks";
 import InvestorCompanies from "./pages/Investor/InvestorCompanies";
 import InvestorWallet from "./pages/Investor/InvestorWallet";
-
+import { store } from "../application/store";
+import { Provider } from "react-redux";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,7 +37,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </ThemeProvider>
   );
 }

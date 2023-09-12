@@ -5,48 +5,14 @@ import CenterBox from "../../components/CenterBox";
 import CompaniesAccordion from "../../features/CompaniesAccordion";
 import { Grid, Typography, Box } from "@mui/material";
 import styled from "@mui/material/styles/styled";
-const companies = [
-  {
-    name: "Apple",
-    stocks: 200,
-    price: 200,
-  },
-  {
-    name: "Google",
-    stocks: 200,
-    price: 200,
-  },
-  {
-    name: "Facebook",
-    stocks: 200,
-    price: 200,
-  },
-  {
-    name: "Microsoft",
-    stocks: 200,
-    price: 200,
-  },
-  {
-    name: "Microsoft2",
-    stocks: 200,
-    price: 200,
-  },
-  {
-    name: "Microsoft3",
-    stocks: 200,
-    price: 200,
-  },
-  {
-    name: "Microsoft4",
-    stocks: 200,
-    price: 200,
-  },
-];
+import { useAppSelector } from "../../../application/hooks";
 
 const CompanyName = styled(Typography)(({ theme }) => ({
-  padding: theme.spacing(2,0),
+  padding: theme.spacing(2, 0),
 }));
+
 const InvestorCompanies = () => {
+  const companies = useAppSelector((state) => state.companies.companies);
   const [selectedCompany, setSelectedCompany] = React.useState<string | false>(
     false
   );

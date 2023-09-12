@@ -11,6 +11,7 @@ import {
   Container,
 } from "@mui/material";
 import { Card } from "../../components/Card";
+import { useAppSelector } from "../../../application/hooks";
 
 const WalletContainer = styled(Box)(({ theme }) => ({
   margin: theme.spacing(2, 0),
@@ -53,10 +54,12 @@ function MoneyForm() {
 }
 
 const InvestorWallet = () => {
+  const user = useAppSelector((state) => state.user);
+
   return (
     <Box>
       <WalletContainer>
-        <WalletCard />
+        <WalletCard text={user.money.toString()} />
       </WalletContainer>
       <Card>
         <MoneyForm />

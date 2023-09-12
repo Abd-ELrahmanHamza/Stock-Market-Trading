@@ -28,12 +28,13 @@ const UserAvatar = styled(Avatar)(({ theme }) => ({
 }));
 interface UserProps {
   source: string;
+  userName: string;
 }
-const User = ({ source }: UserProps) => {
+const User = ({ source, userName }: UserProps) => {
   return (
     <UserContainer>
       <UserAvatar alt="Profile Picture" src={source} />
-      <UserName variant="h6">Abdelrahman</UserName>
+      <UserName variant="h6">{userName}</UserName>
     </UserContainer>
   );
 };

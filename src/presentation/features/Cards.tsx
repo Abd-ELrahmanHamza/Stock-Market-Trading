@@ -4,18 +4,21 @@ import wallet from "../assets/images/wallet_yellow.png";
 import stock from "../assets/images/stock.png";
 import { IconCard } from "../components/IconCard";
 
-const WalletCard = () => {
+interface CardProps {
+  text: string;
+}
+const WalletCard = ({ text }: CardProps) => {
   return (
     <NoPadCard>
-      <IconGradientCard Icon={wallet} text="200$" sub="Wallet" />
+      <IconGradientCard Icon={wallet} text={text} sub="Wallet" />
     </NoPadCard>
   );
 };
 
-const StocksCard = () => {
+const StocksCard = ({ text }: CardProps) => {
   return (
     <NoPadCard>
-      <IconCard Icon={stock} text="250" sub="Stocks" />
+      <IconCard Icon={stock} text={text} sub="Stocks" />
     </NoPadCard>
   );
 };
