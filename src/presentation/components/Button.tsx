@@ -6,7 +6,7 @@ interface Props {
 }
 const SellButton = ({ children, props }: Props) => {
   return (
-    <Button variant="contained" color="error" {...props}>
+    <Button variant="contained" color="secondary" {...props}>
       {children}
     </Button>
   );

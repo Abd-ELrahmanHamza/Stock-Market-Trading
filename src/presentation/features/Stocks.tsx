@@ -143,7 +143,7 @@ export default function Stocks({
   ActionComponent: React.ReactElement;
 }) {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(4);
 
   const handleChangePage = (
     event: React.MouseEvent<HTMLButtonElement> | null,
@@ -160,7 +160,7 @@ export default function Stocks({
   return (
     <Card>
       <CustomTablePagination
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[4, 10, 25]}
         count={rows.length}
         rowsPerPage={rowsPerPage}
         page={page}

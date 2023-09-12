@@ -4,6 +4,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
 import InvestorDashboard from "./pages/Investor/InvestorDashboard";
 import InvestorStocks from "./pages/Investor/InvestorStocks";
+import InvestorCompanies from "./pages/Investor/InvestorCompanies";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: "companies",
-        element: <div>companies</div>,
+        element: <InvestorCompanies />,
       },
       {
         path: "stocks",

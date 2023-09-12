@@ -21,7 +21,7 @@ const theme = responsiveFontSizes(
       secondary: {
         main: "#00b894", // Green
         light: "#00cec9", // Light Green
-        dark: "#0984e3", // Dark Green
+        dark: "#008b70", // Dark Green
       },
       error: {
         main: "#ff0000", // Red
