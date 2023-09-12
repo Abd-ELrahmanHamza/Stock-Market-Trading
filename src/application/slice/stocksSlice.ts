@@ -4,37 +4,37 @@ import Stock from "../../domain/entities/stock";
 const initialState: Stock[] = [
   {
     name: "Apple",
-    count: 200,
-    price: 200,
+    count: 2,
+    price: 2,
   },
   {
     name: "Google",
-    count: 200,
-    price: 200,
+    count: 2,
+    price: 2,
   },
   {
     name: "Facebook",
-    count: 200,
-    price: 200,
+    count: 2,
+    price: 2,
   },
   {
     name: "Microsoft",
-    count: 200,
-    price: 200,
+    count: 2,
+    price: 2,
   },
   {
     name: "Microsoft2",
-    count: 200,
-    price: 200,
+    count: 2,
+    price: 2,
   },
   {
     name: "Microsoft3",
-    count: 200,
-    price: 200,
+    count: 2,
+    price: 2,
   },
   {
     name: "Microsoft4",
-    count: 200,
+    count: 5,
     price: 200,
   },
 ];

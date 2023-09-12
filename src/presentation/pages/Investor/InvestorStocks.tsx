@@ -8,6 +8,8 @@ import Tab from "@mui/material/Tab";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PaidIcon from "@mui/icons-material/Paid";
 import { useAppSelector } from "../../../application/hooks";
+import { buyStockUtil, sellStockUtil } from "../../../application/utils/stocks";
+import Stock from "../../../domain/entities/stock";
 const CenterBox = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
@@ -30,8 +32,17 @@ function IconTabs({ value, handleChange }: Props) {
 const InvestorStocks = () => {
   const userStocks = useAppSelector((state) => state.user.stocks);
   const companiesStocks = useAppSelector((state) => state.stocks);
-  const [value, setValue] = React.useState(0);
+  // const dispatcher = useAppDispatch();
 
+  const [value, setValue] = React.useState(0);
+  const handleBuyStocks = (stock: Stock) => {
+    console.log("Buy");
+    buyStockUtil(stock);
+  };
+  const handleSellStocks = (stock: Stock) => {
+    console.log("Sell");
+    sellStockUtil(stock);
+  };
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -45,11 +56,9 @@ const InvestorStocks = () => {
           </Typography>
           <Stocks
             stocks={userStocks}
-            ActionComponent={
-              <SellButton props={{ onClick: () => console.log("Sell") }}>
-                Sell
-              </SellButton>
-            }
+            ActionComponent={SellButton}
+            handleAction={handleSellStocks}
+            actionText="Sell"
           />
         </Box>
       )}
@@ -60,11 +69,9 @@ const InvestorStocks = () => {
           </Typography>
           <Stocks
             stocks={companiesStocks}
-            ActionComponent={
-              <BuyButton props={{ onClick: () => console.log("Buy") }}>
-                Buy
-              </BuyButton>
-            }
+            ActionComponent={BuyButton}
+            handleAction={handleBuyStocks}
+            actionText="Buy"
           />
         </Box>
       )}

@@ -1,15 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import User from "../../domain/entities/user";
-import { addMoneyReducer } from "../reducer/userReducer";
+import {
+  addMoneyReducer,
+  buyStockReducer,
+  sellStockReducer,
+} from "../reducer/userReducer";
 
 const initialState: User = {
   name: "Abdelrahman",
-  stocksCount: 0,
+  stocksCount: 240,
   money: 1000,
   stocks: [
     {
       name: "Apple",
-      count: 0,
+      count: 20,
       price: 200,
     },
     {
@@ -25,10 +29,12 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     addMoney: addMoneyReducer,
+    buyStock: buyStockReducer,
+    sellStock: sellStockReducer,
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addMoney } = userSlice.actions;
+export const { addMoney, buyStock, sellStock } = userSlice.actions;
 
 export default userSlice.reducer;

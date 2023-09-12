@@ -53,10 +53,10 @@ function MoneyForm({ handleAddMoney }: MoneyFormProps) {
 
 const InvestorWallet = () => {
   const user = useAppSelector((state) => state.user);
-  const userDispatch = useAppDispatch();
+  const dispatcher = useAppDispatch();
   const handleAddMoney = (amount: number) => {
     console.log("Add Money");
-    userDispatch(addMoney(amount));
+    dispatcher(addMoney(amount));
   };
   return (
     <Box>

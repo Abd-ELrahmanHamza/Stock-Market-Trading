@@ -1,5 +1,36 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import User from "../../domain/entities/user";
+import Stock from "../../domain/entities/stock";
+
+const addStock = (
+  state: User,
+  action: PayloadAction<Stock>,
+  method: string
+): Stock[] => {
+  const stockIndex = state.stocks.findIndex(
+    (stock) => stock.name === action.payload.name
+  );
+  const tempStocks = [...state.stocks];
+  if (stockIndex !== -1) {
+    if (
+      method === "remove" &&
+      tempStocks[stockIndex].count === action.payload.count
+    ) {
+      tempStocks.splice(stockIndex, 1);
+    } else {
+      tempStocks[stockIndex] = {
+        ...tempStocks[stockIndex],
+        count:
+          tempStocks[stockIndex].count +
+          (method === "add" ? action.payload.count : -action.payload.count),
+      };
+    }
+  } else {
+    tempStocks.push(action.payload);
+  }
+  console.log("tempStocks", tempStocks);
+  return tempStocks;
+};
 
 const addMoneyReducer = (state: User, action: PayloadAction<number>): User => {
   if (action.payload < 0) return state;
@@ -9,4 +40,35 @@ const addMoneyReducer = (state: User, action: PayloadAction<number>): User => {
   };
 };
 
-export { addMoneyReducer };
+const buyStockReducer = (state: User, action: PayloadAction<Stock>): User => {
+  console.log("buyStockReducer", action.payload);
+  if (
+    action.payload.price < 0 ||
+    action.payload.count < 0 ||
+    action.payload.price * action.payload.count > state.money
+  ) {
+    return state;
+  }
+  const newStocks = addStock(state, action, "add");
+  return {
+    ...state,
+    money: state.money - action.payload.price * action.payload.count,
+    stocksCount: state.stocksCount + action.payload.count,
+    stocks: newStocks,
+  };
+};
+
+const sellStockReducer = (state: User, action: PayloadAction<Stock>): User => {
+  console.log("sellStockReducer", action.payload);
+  if (action.payload.count < 0 || action.payload.price < 0) return state;
+  const newStocks = addStock(state, action, "remove");
+
+  return {
+    ...state,
+    money: state.money + action.payload.price * action.payload.count,
+    stocksCount: state.stocksCount - action.payload.count,
+    stocks: newStocks,
+  };
+};
+
+export { addMoneyReducer, buyStockReducer, sellStockReducer };

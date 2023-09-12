@@ -23,10 +23,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 interface Props {
-  ActionComponent: React.ReactElement;
+  ActionComponent: React.JSXElementConstructor<any>;
   stocks: Stock[];
+  handleAction: (stock: Stock) => void;
+  actionText: string;
 }
-export default function Stocks({ ActionComponent, stocks }: Props) {
+export default function Stocks({
+  ActionComponent,
+  stocks,
+  handleAction,
+  actionText,
+}: Props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(4);
 
@@ -82,7 +89,11 @@ export default function Stocks({ ActionComponent, stocks }: Props) {
                   <StyledTableCell align="right">{stock.count}</StyledTableCell>
                   <StyledTableCell align="right">{stock.price}</StyledTableCell>
                   <StyledTableCell align="right">
-                    {ActionComponent}
+                    <ActionComponent
+                      props={{ onClick: () => handleAction(stock) }}
+                    >
+                      {actionText}
+                    </ActionComponent>
                   </StyledTableCell>
                 </StyledTableRow>
               ))}
