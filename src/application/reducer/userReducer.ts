@@ -28,7 +28,6 @@ const addStock = (
   } else {
     tempStocks.push(action.payload);
   }
-  console.log("tempStocks", tempStocks);
   return tempStocks;
 };
 
@@ -41,7 +40,6 @@ const addMoneyReducer = (state: User, action: PayloadAction<number>): User => {
 };
 
 const buyStockReducer = (state: User, action: PayloadAction<Stock>): User => {
-  console.log("buyStockReducer", action.payload);
   if (
     action.payload.price < 0 ||
     action.payload.count < 0 ||
@@ -59,7 +57,6 @@ const buyStockReducer = (state: User, action: PayloadAction<Stock>): User => {
 };
 
 const sellStockReducer = (state: User, action: PayloadAction<Stock>): User => {
-  console.log("sellStockReducer", action.payload);
   if (action.payload.count < 0 || action.payload.price < 0) return state;
   const newStocks = addStock(state, action, "remove");
 

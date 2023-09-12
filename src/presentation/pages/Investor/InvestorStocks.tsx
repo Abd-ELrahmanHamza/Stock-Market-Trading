@@ -36,11 +36,9 @@ const InvestorStocks = () => {
 
   const [value, setValue] = React.useState(0);
   const handleBuyStocks = (stock: Stock) => {
-    console.log("Buy");
     buyStockUtil(stock);
   };
   const handleSellStocks = (stock: Stock) => {
-    console.log("Sell");
     sellStockUtil(stock);
   };
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
