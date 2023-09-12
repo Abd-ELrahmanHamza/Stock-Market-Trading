@@ -1,6 +1,6 @@
 import { NoPadCard } from "../components/Card";
 import { IconGradientCard } from "../components/IconCard";
-import wallet from "../assets/images/wallet.png";
+import wallet from "../assets/images/wallet_yellow.png";
 import stock from "../assets/images/stock.png";
 import { IconCard } from "../components/IconCard";
 
