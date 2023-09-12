@@ -5,6 +5,7 @@ import { theme } from "./theme";
 import InvestorDashboard from "./pages/Investor/InvestorDashboard";
 import InvestorStocks from "./pages/Investor/InvestorStocks";
 import InvestorCompanies from "./pages/Investor/InvestorCompanies";
+import InvestorWallet from "./pages/Investor/InvestorWallet";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
       },
       {
         path: "wallet",
-        element: <div>wallet</div>,
+        element: <InvestorWallet />,
       },
       {
         path: "companies",

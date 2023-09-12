@@ -76,8 +76,8 @@ const LogoutList = styled(List)(() => ({
 
 const StyledListItemText = styled(ListItemText)(({ theme }) => ({
   "& .MuiTypography-root": {
-    fontSize: "1.2rem",
-    fontWeight: 500,
+    fontSize: "1.3rem",
+    // fontWeight: 500,
   },
 }));
 

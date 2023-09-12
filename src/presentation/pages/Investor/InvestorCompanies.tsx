@@ -27,11 +27,6 @@ const companies = [
     price: 200,
   },
   {
-    name: "Microsoft",
-    stocks: 200,
-    price: 200,
-  },
-  {
     name: "Microsoft2",
     stocks: 200,
     price: 200,
