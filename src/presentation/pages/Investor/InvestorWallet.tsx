@@ -2,27 +2,25 @@ import { Box } from "@mui/material";
 import { WalletCard } from "../../features/Cards";
 import styled from "@mui/material/styles/styled";
 import { useState } from "react";
-import {
-  TextField,
-  Button,
-  Grid,
-  Paper,
-  Typography,
-  Container,
-} from "@mui/material";
+import { TextField, Button, Grid, Typography, Container } from "@mui/material";
 import { Card } from "../../components/Card";
-import { useAppSelector } from "../../../application/hooks";
+import { useAppDispatch, useAppSelector } from "../../../application/hooks";
+import { addMoney } from "../../../application/slice/userSlice";
 
 const WalletContainer = styled(Box)(({ theme }) => ({
   margin: theme.spacing(2, 0),
 }));
-function MoneyForm() {
+
+interface MoneyFormProps {
+  handleAddMoney: (amount: number) => void;
+}
+function MoneyForm({ handleAddMoney }: MoneyFormProps) {
   const [amount, setAmount] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Handle form submission here, e.g., send the amount to a server or perform some action
-    console.log("Submitted amount:", amount);
+    handleAddMoney(amount ? parseInt(amount) : 0);
   };
 
   return (
@@ -55,14 +53,18 @@ function MoneyForm() {
 
 const InvestorWallet = () => {
   const user = useAppSelector((state) => state.user);
-
+  const userDispatch = useAppDispatch();
+  const handleAddMoney = (amount: number) => {
+    console.log("Add Money");
+    userDispatch(addMoney(amount));
+  };
   return (
     <Box>
       <WalletContainer>
         <WalletCard text={user.money.toString()} />
       </WalletContainer>
       <Card>
-        <MoneyForm />
+        <MoneyForm handleAddMoney={handleAddMoney} />
       </Card>
     </Box>
   );

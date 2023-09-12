@@ -11,7 +11,7 @@ const decrementReducer = (state: CounterState) => {
 
 const incrementByAmountReducer = (
   state: CounterState,
- action: PayloadAction<number>
+  action: PayloadAction<number>
 ) => {
   state.value += action.payload;
 };

@@ -12,7 +12,7 @@ const CompanyName = styled(Typography)(({ theme }) => ({
 }));
 
 const InvestorCompanies = () => {
-  const companies = useAppSelector((state) => state.companies.companies);
+  const stocks = useAppSelector((state) => state.stocks);
   const [selectedCompany, setSelectedCompany] = React.useState<string | false>(
     false
   );
@@ -35,7 +35,7 @@ const InvestorCompanies = () => {
         <Grid item xs={1} md={1}>
           <Card>
             <CompaniesAccordion
-              companies={companies}
+              stocks={stocks}
               handleSelectCompany={handleSelectCompany}
             />
           </Card>

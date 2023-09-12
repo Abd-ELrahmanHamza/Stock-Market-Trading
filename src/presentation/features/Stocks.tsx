@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Card } from "../components/Card";
 import { CustomTablePagination } from "../components/CustomTablePagination";
+import Stock from "../../domain/entities/stock";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     color: theme.palette.primary.main,
@@ -21,31 +22,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-
-function createData(
-  name: string,
-  calories: string,
-  fat: number,
-  carbs: number
-) {
-  return { name, calories, fat, carbs };
-}
-
-const rows = [
-  createData("Frozen yoghurt", "Buy", 6.0, 24),
-  createData("Ice cream sandwich", "Buy", 9.0, 37),
-  createData("Eclair", "Buy", 16.0, 24),
-  createData("Cupcake", "Buy", 3.7, 67),
-  createData("Gingerbread", "Buy", 16.0, 49),
-  createData("AAAA", "Buy", 16.0, 49),
-  createData("BBBB", "Buy", 16.0, 49),
-];
-
-export default function Stocks({
-  ActionComponent,
-}: {
+interface Props {
   ActionComponent: React.ReactElement;
-}) {
+  stocks: Stock[];
+}
+export default function Stocks({ ActionComponent, stocks }: Props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(4);
 
@@ -65,7 +46,7 @@ export default function Stocks({
     <Card>
       <CustomTablePagination
         rowsPerPageOptions={[4, 10, 25]}
-        count={rows.length}
+        count={stocks.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
@@ -88,20 +69,18 @@ export default function Stocks({
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {stocks
               .slice(
                 page * rowsPerPage,
-                Math.min(page * rowsPerPage + rowsPerPage, rows.length)
+                Math.min(page * rowsPerPage + rowsPerPage, stocks.length)
               )
-              .map((row) => (
-                <StyledTableRow key={row.name}>
+              .map((stock) => (
+                <StyledTableRow key={stock.name}>
                   <StyledTableCell component="th" scope="row">
-                    {row.name}
+                    {stock.name}
                   </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.calories}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                  <StyledTableCell align="right">{stock.count}</StyledTableCell>
+                  <StyledTableCell align="right">{stock.price}</StyledTableCell>
                   <StyledTableCell align="right">
                     {ActionComponent}
                   </StyledTableCell>

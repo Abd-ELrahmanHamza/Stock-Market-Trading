@@ -42,8 +42,6 @@ const rows = [
   createData("Eclair", "Buy", 16.0, 24),
   createData("Cupcake", "Buy", 3.7, 67),
   createData("Gingerbread", "Buy", 16.0, 49),
-  createData("Gingerbread", "Buy", 16.0, 49),
-  createData("Gingerbread", "Buy", 16.0, 49),
 ];
 
 export default function Transactions() {

@@ -7,6 +7,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PaidIcon from "@mui/icons-material/Paid";
+import { useAppSelector } from "../../../application/hooks";
 const CenterBox = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
@@ -27,6 +28,8 @@ function IconTabs({ value, handleChange }: Props) {
   );
 }
 const InvestorStocks = () => {
+  const userStocks = useAppSelector((state) => state.user.stocks);
+  const companiesStocks = useAppSelector((state) => state.stocks);
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -41,6 +44,7 @@ const InvestorStocks = () => {
             Your Stocks
           </Typography>
           <Stocks
+            stocks={userStocks}
             ActionComponent={
               <SellButton props={{ onClick: () => console.log("Sell") }}>
                 Sell
@@ -55,6 +59,7 @@ const InvestorStocks = () => {
             Buy Stocks
           </Typography>
           <Stocks
+            stocks={companiesStocks}
             ActionComponent={
               <BuyButton props={{ onClick: () => console.log("Buy") }}>
                 Buy
