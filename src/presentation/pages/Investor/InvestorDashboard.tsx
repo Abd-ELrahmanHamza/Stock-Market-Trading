@@ -1,11 +1,15 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { Card } from "../../components/Card";
 import styled from "@mui/material/styles/styled";
 import Transactions from "../../features/Transactions";
 import { StocksCard, WalletCard } from "../../features/Cards";
 import AreaChart from "../../components/AreaChart";
 import { useAppSelector } from "../../../application/hooks";
-
+import React from "react";
+import { addProfitUtil } from "../../../application/utils/user";
+import CenterBox from "../../components/CenterBox";
+import { BuyButton } from "../../components/Button";
+import { useNavigate } from "react-router-dom";
 const StyledGrid = styled(Grid)(({ theme }) => ({
   marginBottom: theme.spacing(2),
 }));
@@ -15,7 +19,39 @@ const StyledCardGrid = styled(Grid)(({ theme }) => ({
 }));
 
 const InvestorDashboard = () => {
+  const navigate = useNavigate();
   const user = useAppSelector((state) => state.user);
+  const companies = useAppSelector((state) => state.companies);
+  const userProfit = useAppSelector((state) => state.user.profit);
+  const [performanceDataGraph, setPerformanceDataGraph] = React.useState<
+    { name: string; value: number }[]
+  >([]);
+
+  React.useEffect(() => {
+    const dataGraph = [];
+    if (!userProfit) return;
+    for (const key in userProfit) {
+      dataGraph.push({ name: key, value: userProfit[key] });
+    }
+    setPerformanceDataGraph(dataGraph);
+  }, [userProfit]);
+  React.useEffect(() => {
+    const calculateProfitLoss = () => {
+      if (!companies || !user.stocks) return;
+      let profitLoss = 0;
+      user.stocks.forEach((stock) => {
+        const company = companies[stock.name];
+        if (!company) return;
+        const currentStockValue = company[company.length - 1].value;
+        profitLoss += (currentStockValue - stock.price) * stock.count;
+      });
+      return profitLoss;
+    };
+    const temp = calculateProfitLoss();
+    if (temp) {
+      addProfitUtil(temp);
+    }
+  }, [companies, user.stocks]);
   return (
     <Box>
       <StyledGrid container spacing={3} columns={{ sm: 1, md: 4 }}>
@@ -31,17 +67,35 @@ const InvestorDashboard = () => {
         </Grid>
         <StyledCardGrid item xs={1} md={3}>
           <Card>
-            <AreaChart
-              dataSet={[
-                { name: "Jun", value: 10 },
-                { name: "asc", value: 10 },
-                { name: "Junsad", value: 120 },
-                { name: "Junsad", value: 130 },
-                { name: "Junsad", value: 210 },
-                { name: "Junsad", value: -10 },
-                { name: "Junsad", value: 10 },
-              ]}
-            />
+            {performanceDataGraph && performanceDataGraph.length !== 0 && (
+              <>
+                <AreaChart dataSet={performanceDataGraph} />
+              </>
+            )}
+
+            {performanceDataGraph && performanceDataGraph.length === 0 && (
+              <CenterBox>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Typography variant="h4" sx={{ padding: "1rem" }}>
+                    Buy stock to see your performance
+                  </Typography>
+                  <BuyButton
+                    props={{
+                      onClick: () => {
+                        navigate("/stocks");
+                      },
+                    }}
+                  >
+                    <Typography variant="h5">Buy Stocks</Typography>
+                  </BuyButton>
+                </Box>
+              </CenterBox>
+            )}
           </Card>
         </StyledCardGrid>
       </StyledGrid>

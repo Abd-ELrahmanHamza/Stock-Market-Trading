@@ -11,6 +11,11 @@ import {
 import { store } from "../store";
 
 const buyStockUtil = (stock: Stock) => {
+  if (
+    stock.count === 0 ||
+    stock.price * stock.count > store.getState().user.money
+  )
+    return;
   store.dispatch(buyStockUser(stock));
   store.dispatch(buyStockStocks(stock));
   store.dispatch(

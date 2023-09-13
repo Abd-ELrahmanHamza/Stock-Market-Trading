@@ -68,4 +68,16 @@ const sellStockReducer = (state: User, action: PayloadAction<Stock>): User => {
   };
 };
 
-export { addMoneyReducer, buyStockReducer, sellStockReducer };
+const addProfitReducer = (state: User, action: PayloadAction<number>): User => {
+  const date = new Date();
+  return {
+    ...state,
+    profit: {
+      ...state.profit,
+      [`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`]:
+        action.payload,
+    },
+  };
+};
+
+export { addMoneyReducer, buyStockReducer, sellStockReducer, addProfitReducer };

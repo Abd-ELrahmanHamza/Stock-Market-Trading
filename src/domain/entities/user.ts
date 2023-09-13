@@ -5,4 +5,5 @@ export default interface User {
   stocksCount: number;
   money: number;
   stocks: Stock[];
+  profit: { [key: string]: number };
 }

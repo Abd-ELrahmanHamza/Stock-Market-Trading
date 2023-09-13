@@ -25,6 +25,11 @@ const InvestorCompanies = () => {
   };
 
   useEffect(() => {
+    if (!companies || selectedCompany) return;
+    setSelectedCompany(Object.keys(companies)[0]);
+  }, [companies, selectedCompany]);
+
+  useEffect(() => {
     if (!companies[selectedCompany || ""]) return;
     setCompanyStockRecords(
       companies[selectedCompany || ""].map((record) => ({

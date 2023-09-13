@@ -29,7 +29,6 @@ export default function Transactions() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(4);
   const transactions = useAppSelector((state) => state.transactions);
-  console.log(transactions);
   const handleChangePage = (
     _: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number
