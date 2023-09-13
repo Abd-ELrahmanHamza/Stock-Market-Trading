@@ -80,4 +80,14 @@ const addProfitReducer = (state: User, action: PayloadAction<number>): User => {
   };
 };
 
-export { addMoneyReducer, buyStockReducer, sellStockReducer, addProfitReducer };
+const setUserReducer = (state: User, action: PayloadAction<User>): User => {
+  return action.payload;
+};
+
+export {
+  addMoneyReducer,
+  buyStockReducer,
+  sellStockReducer,
+  addProfitReducer,
+  setUserReducer,
+};

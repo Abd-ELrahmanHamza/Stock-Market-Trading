@@ -23,22 +23,22 @@ const navigationList = [
   {
     text: "Dashboard",
     icon: <InboxIcon />,
-    link: "/",
+    link: "",
   },
   {
     text: "Wallet",
     icon: <WalletIcon />,
-    link: "/wallet",
+    link: "wallet",
   },
   {
     text: "Stocks",
     icon: <PaidIcon />,
-    link: "/stocks",
+    link: "stocks",
   },
   {
     text: "Companies",
     icon: <ApartmentIcon />,
-    link: "/companies",
+    link: "companies",
   },
 ];
 

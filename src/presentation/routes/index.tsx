@@ -4,10 +4,11 @@ import InvestorDashboard from "../pages/Investor/InvestorDashboard";
 import InvestorCompanies from "../pages/Investor/InvestorCompanies";
 import InvestorStocks from "../pages/Investor/InvestorStocks";
 import InvestorWallet from "../pages/Investor/InvestorWallet";
+import SignInSide from "../pages/Common/Login";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/investor/",
     element: <Investor />,
     children: [
       {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         element: <InvestorStocks />,
       },
     ],
+  },
+  {
+    path: "/",
+    element: <SignInSide />,
   },
 ]);
 

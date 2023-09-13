@@ -36,6 +36,10 @@ const Link = ({ dest, children }: NavLinkProps) => {
 };
 
 const NavLink = ({ dest, children }: NavLinkProps) => {
-  return <StyledNavLink to={dest}>{children}</StyledNavLink>;
+  return (
+    <StyledNavLink end to={dest}>
+      {children}
+    </StyledNavLink>
+  );
 };
 export { Link, NavLink };

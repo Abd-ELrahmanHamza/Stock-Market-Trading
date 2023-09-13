@@ -5,6 +5,7 @@ import {
   addProfitReducer,
   buyStockReducer,
   sellStockReducer,
+  setUserReducer,
 } from "../reducer/userReducer";
 
 const initialState: User = {
@@ -13,6 +14,7 @@ const initialState: User = {
   money: 1000,
   stocks: [],
   profit: {},
+  role: "investor",
 };
 
 export const userSlice = createSlice({
@@ -23,10 +25,12 @@ export const userSlice = createSlice({
     buyStock: buyStockReducer,
     sellStock: sellStockReducer,
     addProfit: addProfitReducer,
+    setUser: setUserReducer,
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addMoney, buyStock, sellStock, addProfit } = userSlice.actions;
+export const { addMoney, buyStock, sellStock, addProfit, setUser } =
+  userSlice.actions;
 
 export default userSlice.reducer;

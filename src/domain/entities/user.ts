@@ -6,4 +6,5 @@ export default interface User {
   money: number;
   stocks: Stock[];
   profit: { [key: string]: number };
+  role: "investor" | "admin";
 }
