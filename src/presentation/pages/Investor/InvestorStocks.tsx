@@ -23,8 +23,8 @@ function IconTabs({ value, handleChange }: Props) {
   return (
     <CenterBox>
       <Tabs value={value} onChange={handleChange}>
-        <Tab icon={<PhoneIcon />} label="Your Stocks" />
         <Tab icon={<PaidIcon />} label="Buy Stocks" />
+        <Tab icon={<PhoneIcon />} label="Your Stocks" />
       </Tabs>
     </CenterBox>
   );
@@ -49,19 +49,6 @@ const InvestorStocks = () => {
       {value === 0 && (
         <Box>
           <Typography variant="h4" sx={{ padding: "1rem" }}>
-            Your Stocks
-          </Typography>
-          <Stocks
-            stocks={userStocks}
-            ActionComponent={SellButton}
-            handleAction={handleSellStocks}
-            actionText="Sell"
-          />
-        </Box>
-      )}
-      {value === 1 && (
-        <Box>
-          <Typography variant="h4" sx={{ padding: "1rem" }}>
             Buy Stocks
           </Typography>
           <Stocks
@@ -69,6 +56,19 @@ const InvestorStocks = () => {
             ActionComponent={BuyButton}
             handleAction={handleBuyStocks}
             actionText="Buy"
+          />
+        </Box>
+      )}
+      {value === 1 && (
+        <Box>
+          <Typography variant="h4" sx={{ padding: "1rem" }}>
+            Your Stocks
+          </Typography>
+          <Stocks
+            stocks={userStocks}
+            ActionComponent={SellButton}
+            handleAction={handleSellStocks}
+            actionText="Sell"
           />
         </Box>
       )}
