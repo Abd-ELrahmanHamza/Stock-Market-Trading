@@ -3,6 +3,8 @@ import stockReducer from "./slice/stocksSlice";
 import userReducer from "./slice/userSlice";
 import companiesSlice from "./slice/companiesSlice";
 import transactionsSlice from "./slice/transactionsSlice";
+import middlewares from "./middleware";
+import services from "../infrastructure/services";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +13,10 @@ export const store = configureStore({
     companies: companiesSlice,
     transactions: transactionsSlice,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(
+      ...middlewares.map((middleware) => middleware(services))
+    ),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

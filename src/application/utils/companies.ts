@@ -27,7 +27,7 @@ const updateCompaniesRecords = () => {
     const minRandomValue = -5;
     const maxRandomValue = 5;
     randomlyUpdateCompanyRecord(minRandomValue, maxRandomValue);
-  }, 5000);
+  }, 60000);
 };
 
 export { updateCompaniesRecords };
