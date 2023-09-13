@@ -4,9 +4,9 @@ import CenterBox from "../../components/CenterBox";
 import CompaniesAccordion from "../../features/CompaniesAccordion";
 import { Grid, Typography, Box } from "@mui/material";
 import styled from "@mui/material/styles/styled";
-import { useAppSelector } from "../../../application/hooks";
 import { getCompanyRecord } from "../../../application/utils/companies";
 import LineChart from "../../components/LineChart";
+import { useAppSelector } from "../../../application/hooks";
 
 const CompanyName = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(2, 0),
@@ -14,6 +14,7 @@ const CompanyName = styled(Typography)(({ theme }) => ({
 
 const InvestorCompanies = () => {
   const stocks = useAppSelector((state) => state.stocks);
+  const companies = useAppSelector((state) => state.companies);
   const [selectedCompany, setSelectedCompany] = React.useState<string | false>(
     false
   );
@@ -25,15 +26,14 @@ const InvestorCompanies = () => {
   };
 
   useEffect(() => {
-    const companyStockRecords = getCompanyRecord(selectedCompany || "");
-    if (!companyStockRecords) return;
+    if (!companies[selectedCompany || ""]) return;
     setCompanyStockRecords(
-      companyStockRecords.map((record) => ({
+      companies[selectedCompany || ""].map((record) => ({
         name: record.date,
         value: record.value,
       }))
     );
-  }, [selectedCompany]);
+  }, [selectedCompany, companies]);
   return (
     <Box>
       <CompanyName variant="h4" color="primary">

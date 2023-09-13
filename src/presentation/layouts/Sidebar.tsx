@@ -11,7 +11,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { NavLink } from "../components/Link";
-import { Constants } from "../theme";
+import { Constants } from "../theme/theme";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/images/logo.svg";
 

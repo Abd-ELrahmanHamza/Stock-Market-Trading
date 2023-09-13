@@ -74,6 +74,7 @@ const CompaniesAccordion = ({ stocks, handleSelectCompany }: Props) => {
           <Accordion
             expanded={expanded === stock.name}
             onChange={handleChange(stock.name)}
+            key={stock.name}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}

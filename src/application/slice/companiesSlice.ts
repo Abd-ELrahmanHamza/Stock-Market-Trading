@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CompaniesRecords } from "../../domain/entities/company";
+import { setCompaniesStockRecordsReducer } from "../reducer/companiesReducer";
 
 const initialState: CompaniesRecords = {
   Apple: [
@@ -19,61 +20,61 @@ const initialState: CompaniesRecords = {
   Google: [
     {
       date: "2021-01-01",
-      value: 100,
+      value: 10,
     },
     {
       date: "2021-01-02",
-      value: 200,
+      value: 20,
     },
   ],
   Facebook: [
     {
       date: "2021-01-01",
-      value: 100,
+      value: 10,
     },
     {
       date: "2021-01-02",
-      value: 200,
+      value: 20,
     },
   ],
   Microsoft: [
     {
       date: "2021-01-01",
-      value: 100,
+      value: 10,
     },
     {
       date: "2021-01-02",
-      value: 200,
+      value: 20,
     },
   ],
   Microsoft2: [
     {
       date: "2021-01-01",
-      value: 100,
+      value: 10,
     },
     {
       date: "2021-01-02",
-      value: 200,
+      value: 20,
     },
   ],
   Microsoft3: [
     {
       date: "2021-01-01",
-      value: 100,
+      value: 10,
     },
     {
       date: "2021-01-02",
-      value: 200,
+      value: 20,
     },
   ],
   Microsoft4: [
     {
       date: "2021-01-01",
-      value: 100,
+      value: 10,
     },
     {
       date: "2021-01-02",
-      value: 200,
+      value: 20,
     },
   ],
 };
@@ -81,10 +82,12 @@ const initialState: CompaniesRecords = {
 export const companiesSlice = createSlice({
   name: "companies",
   initialState,
-  reducers: {},
+  reducers: {
+    setCompaniesStockRecords: setCompaniesStockRecordsReducer,
+  },
 });
 
 // Action creators are generated for each case reducer function
-export const {} = companiesSlice.actions;
+export const { setCompaniesStockRecords } = companiesSlice.actions;
 
 export default companiesSlice.reducer;

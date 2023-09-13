@@ -18,4 +18,8 @@ const sellStockUtil = (stock: Stock) => {
   store.dispatch(sellStockUser(stock));
   store.dispatch(sellStockStocks(stock));
 };
-export { buyStockUtil, sellStockUtil };
+
+const getAllStocksUtil = () => {
+  return store.getState().stocks;
+};
+export { buyStockUtil, sellStockUtil, getAllStocksUtil };

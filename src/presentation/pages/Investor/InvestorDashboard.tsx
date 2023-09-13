@@ -1,10 +1,10 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { Card } from "../../components/Card";
 import styled from "@mui/material/styles/styled";
 import Transactions from "../../features/Transactions";
 import { StocksCard, WalletCard } from "../../features/Cards";
-import { useAppSelector } from "../../../application/hooks";
 import AreaChart from "../../components/AreaChart";
+import { getUserUtil } from "../../../application/utils/user";
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
   marginBottom: theme.spacing(2),
@@ -15,7 +15,7 @@ const StyledCardGrid = styled(Grid)(({ theme }) => ({
 }));
 
 const InvestorDashboard = () => {
-  const user = useAppSelector((state) => state.user);
+  const user = getUserUtil();
   return (
     <Box>
       <StyledGrid container spacing={3} columns={{ sm: 1, md: 4 }}>
