@@ -7,8 +7,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Box, Tab, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { CustomTablePagination } from "../components/CustomTablePagination";
+import { useAppSelector } from "../../application/hooks";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -23,28 +24,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(
-  name: string,
-  calories: string,
-  fat: number,
-  carbs: number
-) {
-  return { name, calories, fat, carbs };
-}
-
-const rows = [
-  createData("Frozen yoghurt", "Buy", 6.0, 24),
-  createData("Ice cream sandwich", "Buy", 9.0, 37),
-  createData("Eclair", "Buy", 16.0, 24),
-  createData("Cupcake", "Buy", 3.7, 67),
-  createData("Gingerbread", "Buy", 16.0, 49),
-];
 
 export default function Transactions() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(4);
+  const transactions = useAppSelector((state) => state.transactions);
+  console.log(transactions);
   const handleChangePage = (
-    event: React.MouseEvent<HTMLButtonElement> | null,
+    _: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number
   ) => {
     setPage(newPage);
@@ -67,7 +54,7 @@ export default function Transactions() {
       >
         <CustomTablePagination
           rowsPerPageOptions={[4, 10, 25]}
-          count={rows.length}
+          count={transactions.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -83,26 +70,26 @@ export default function Transactions() {
             <TableRow>
               <StyledTableCell>Company</StyledTableCell>
               <StyledTableCell align="right">Type</StyledTableCell>
-              <StyledTableCell align="right">Stocks</StyledTableCell>
-              <StyledTableCell align="right">Money</StyledTableCell>
+              <StyledTableCell align="right">Date</StyledTableCell>
+              <StyledTableCell align="right">Amount</StyledTableCell>
+              <StyledTableCell align="right">Price</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {transactions
               .slice(
                 page * rowsPerPage,
-                Math.min(page * rowsPerPage + rowsPerPage, rows.length)
+                Math.min(page * rowsPerPage + rowsPerPage, transactions.length)
               )
               .map((row) => (
-                <StyledTableRow key={row.name}>
+                <StyledTableRow key={row.company}>
                   <StyledTableCell component="th" scope="row">
-                    {row.name}
+                    {row.company}
                   </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.calories}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                  <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                  <StyledTableCell align="right">{row.type}</StyledTableCell>
+                  <StyledTableCell align="right">{row.date}</StyledTableCell>
+                  <StyledTableCell align="right">{row.amount}</StyledTableCell>
+                  <StyledTableCell align="right">{row.price}</StyledTableCell>
                 </StyledTableRow>
               ))}
           </TableBody>

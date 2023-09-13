@@ -7,13 +7,9 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PaidIcon from "@mui/icons-material/Paid";
-import {
-  buyStockUtil,
-  getAllStocksUtil,
-  sellStockUtil,
-} from "../../../application/utils/stocks";
+import { buyStockUtil, sellStockUtil } from "../../../application/utils/stocks";
 import Stock from "../../../domain/entities/stock";
-import { getUserUtil } from "../../../application/utils/user";
+import { useAppSelector } from "../../../application/hooks";
 const CenterBox = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
@@ -34,8 +30,8 @@ function IconTabs({ value, handleChange }: Props) {
   );
 }
 const InvestorStocks = () => {
-  const userStocks = getUserUtil().stocks;
-  const companiesStocks = getAllStocksUtil();
+  const userStocks = useAppSelector((state) => state.user.stocks);
+  const companiesStocks = useAppSelector((state) => state.stocks);
 
   const [value, setValue] = React.useState(0);
   const handleBuyStocks = (stock: Stock) => {

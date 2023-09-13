@@ -4,7 +4,6 @@ import CenterBox from "../../components/CenterBox";
 import CompaniesAccordion from "../../features/CompaniesAccordion";
 import { Grid, Typography, Box } from "@mui/material";
 import styled from "@mui/material/styles/styled";
-import { getCompanyRecord } from "../../../application/utils/companies";
 import LineChart from "../../components/LineChart";
 import { useAppSelector } from "../../../application/hooks";
 

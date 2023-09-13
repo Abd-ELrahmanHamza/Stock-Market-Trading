@@ -3,6 +3,7 @@ import {
   buyStock as buyStockStocks,
   sellStock as sellStockStocks,
 } from "../slice/stocksSlice";
+import { addTransaction } from "../slice/transactionsSlice";
 import {
   buyStock as buyStockUser,
   sellStock as sellStockUser,
@@ -12,14 +13,29 @@ import { store } from "../store";
 const buyStockUtil = (stock: Stock) => {
   store.dispatch(buyStockUser(stock));
   store.dispatch(buyStockStocks(stock));
+  store.dispatch(
+    addTransaction({
+      company: stock.name,
+      amount: stock.count,
+      price: stock.price,
+      date: new Date().toISOString().slice(0, 10),
+      type: "buy",
+    })
+  );
 };
 
 const sellStockUtil = (stock: Stock) => {
   store.dispatch(sellStockUser(stock));
   store.dispatch(sellStockStocks(stock));
+  store.dispatch(
+    addTransaction({
+      company: stock.name,
+      amount: stock.count,
+      price: stock.price,
+      date: new Date().toISOString().slice(0, 10),
+      type: "sell",
+    })
+  );
 };
 
-const getAllStocksUtil = () => {
-  return store.getState().stocks;
-};
-export { buyStockUtil, sellStockUtil, getAllStocksUtil };
+export { buyStockUtil, sellStockUtil };

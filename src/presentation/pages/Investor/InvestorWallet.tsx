@@ -4,9 +4,8 @@ import styled from "@mui/material/styles/styled";
 import { useState } from "react";
 import { TextField, Button, Grid, Typography, Container } from "@mui/material";
 import { Card } from "../../components/Card";
-import { useAppDispatch } from "../../../application/hooks";
+import { useAppDispatch, useAppSelector } from "../../../application/hooks";
 import { addMoney } from "../../../application/slice/userSlice";
-import { getUserUtil } from "../../../application/utils/user";
 
 const WalletContainer = styled(Box)(({ theme }) => ({
   margin: theme.spacing(2, 0),
@@ -53,7 +52,7 @@ function MoneyForm({ handleAddMoney }: MoneyFormProps) {
 }
 
 const InvestorWallet = () => {
-  const user = getUserUtil();
+  const user = useAppSelector((state) => state.user);
   const dispatcher = useAppDispatch();
   const handleAddMoney = (amount: number) => {
     console.log("Add Money");

@@ -9,7 +9,6 @@ import React from "react";
 import { updateCompaniesRecords } from "../application/utils/companies";
 
 function App() {
-  console.log("APP");
   React.useEffect(() => {
     updateCompaniesRecords();
   }, []);

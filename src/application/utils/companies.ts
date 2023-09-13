@@ -2,10 +2,6 @@ import { CompanyStockRecord } from "../../domain/entities/company";
 import { setCompaniesStockRecords } from "../slice/companiesSlice";
 import { store } from "../store";
 
-const getCompanyRecord = (company: string) => {
-  return store.getState().companies[company];
-};
-
 const randomlyUpdateCompanyRecord = (
   minRandomValue: number,
   maxRandomValue: number
@@ -34,4 +30,4 @@ const updateCompaniesRecords = () => {
   }, 5000);
 };
 
-export { getCompanyRecord, updateCompaniesRecords };
+export { updateCompaniesRecords };

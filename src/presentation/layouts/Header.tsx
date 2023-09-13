@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import styled from "@mui/material/styles/styled";
 import User from "../components/User";
 import logo from "../assets/images/logo.svg";
-import { getUserUtil } from "../../application/utils/user";
+import { useAppSelector } from "../../application/hooks";
 const HeaderContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -18,7 +18,7 @@ interface HeaderProps {
   title: string;
 }
 const Header = ({ title }: HeaderProps) => {
-  const user = getUserUtil();
+  const user = useAppSelector((state) => state.user);
   return (
     <HeaderContainer>
       <Typography variant="h4">{title}</Typography>
