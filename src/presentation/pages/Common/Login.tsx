@@ -35,7 +35,7 @@ export default function SignInSide() {
     };
     setUserUtil(user);
     if (user.role === "investor") navigate("/investor");
-    else navigate("/investor");
+    else navigate("/admin");
   };
   const [role, setRole] = React.useState("investor");
 

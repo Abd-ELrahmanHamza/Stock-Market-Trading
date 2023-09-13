@@ -87,11 +87,11 @@ const InvestorDashboard = () => {
                   <BuyButton
                     props={{
                       onClick: () => {
-                        navigate("/stocks");
+                        navigate("/investor/stocks");
                       },
                     }}
                   >
-                    <Typography variant="h5">Buy Stocks</Typography>
+                    <Typography variant="h6">Buy Stocks</Typography>
                   </BuyButton>
                 </Box>
               </CenterBox>
