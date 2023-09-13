@@ -32,7 +32,6 @@ function IconTabs({ value, handleChange }: Props) {
 const InvestorStocks = () => {
   const userStocks = useAppSelector((state) => state.user.stocks);
   const companiesStocks = useAppSelector((state) => state.stocks);
-  // const dispatcher = useAppDispatch();
 
   const [value, setValue] = React.useState(0);
   const handleBuyStocks = (stock: Stock) => {

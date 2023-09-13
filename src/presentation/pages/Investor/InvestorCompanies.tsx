@@ -1,11 +1,12 @@
-import React from "react";
-import { BarChart } from "../../components/BarChart";
+import React, { useEffect } from "react";
 import { Card } from "../../components/Card";
 import CenterBox from "../../components/CenterBox";
 import CompaniesAccordion from "../../features/CompaniesAccordion";
 import { Grid, Typography, Box } from "@mui/material";
 import styled from "@mui/material/styles/styled";
 import { useAppSelector } from "../../../application/hooks";
+import { getCompanyRecord } from "../../../application/utils/companies";
+import LineChart from "../../components/LineChart";
 
 const CompanyName = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(2, 0),
@@ -16,9 +17,23 @@ const InvestorCompanies = () => {
   const [selectedCompany, setSelectedCompany] = React.useState<string | false>(
     false
   );
+  const [companyStockRecords, setCompanyStockRecords] = React.useState<
+    { name: string; value: number }[]
+  >([]);
   const handleSelectCompany = (company: string) => {
     setSelectedCompany(company);
   };
+
+  useEffect(() => {
+    const companyStockRecords = getCompanyRecord(selectedCompany || "");
+    if (!companyStockRecords) return;
+    setCompanyStockRecords(
+      companyStockRecords.map((record) => ({
+        name: record.date,
+        value: record.value,
+      }))
+    );
+  }, [selectedCompany]);
   return (
     <Box>
       <CompanyName variant="h4" color="primary">
@@ -28,7 +43,7 @@ const InvestorCompanies = () => {
         <Grid item xs={1} md={3}>
           <Card>
             <CenterBox>
-              <BarChart />
+              <LineChart dataSet={companyStockRecords} />
             </CenterBox>
           </Card>
         </Grid>

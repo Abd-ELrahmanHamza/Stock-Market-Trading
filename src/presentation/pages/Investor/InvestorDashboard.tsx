@@ -1,10 +1,10 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { Card } from "../../components/Card";
-import { BarChart } from "../../components/BarChart";
 import styled from "@mui/material/styles/styled";
 import Transactions from "../../features/Transactions";
 import { StocksCard, WalletCard } from "../../features/Cards";
 import { useAppSelector } from "../../../application/hooks";
+import AreaChart from "../../components/AreaChart";
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
   marginBottom: theme.spacing(2),
@@ -20,7 +20,7 @@ const InvestorDashboard = () => {
     <Box>
       <StyledGrid container spacing={3} columns={{ sm: 1, md: 4 }}>
         <Grid item xs={1} md={1}>
-          <StyledGrid container spacing={8} columns={{ sm: 2, md: 1 }}>
+          <StyledGrid container spacing={3} columns={{ sm: 2, md: 1 }}>
             <StyledCardGrid item xs={1} md={1}>
               <WalletCard text={user.money.toString()} />
             </StyledCardGrid>
@@ -31,12 +31,22 @@ const InvestorDashboard = () => {
         </Grid>
         <StyledCardGrid item xs={1} md={3}>
           <Card>
-            <Transactions />
+            <AreaChart
+              dataSet={[
+                { name: "Jun", value: 10 },
+                { name: "asc", value: 10 },
+                { name: "Junsad", value: 120 },
+                { name: "Junsad", value: 130 },
+                { name: "Junsad", value: 210 },
+                { name: "Junsad", value: -10 },
+                { name: "Junsad", value: 10 },
+              ]}
+            />
           </Card>
         </StyledCardGrid>
       </StyledGrid>
       <Card>
-        <BarChart />
+        <Transactions />
       </Card>
     </Box>
   );
