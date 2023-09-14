@@ -24,12 +24,8 @@ const AdminStatistics = () => {
     dispatch(fetchStatistics());
   }, [dispatch]);
 
-  console.log(statistics);
   return (
     <Box>
-      <Card>
-        <StyledTitle variant="h3">Statistics</StyledTitle>
-      </Card>
       {statistics &&
         Object.keys(statistics.statistics).map((key) => (
           <ChartContainer key={key}>
@@ -44,7 +40,7 @@ const AdminStatistics = () => {
                 <StyledTitle variant="h4" color="primary">
                   {key}
                 </StyledTitle>
-                <LineChart dataSet={[{ name: "Jan", value: 1 }]} />
+                <LineChart dataSet={statistics.statistics[key]} />
               </Card>
             </CenterBox>
           </ChartContainer>

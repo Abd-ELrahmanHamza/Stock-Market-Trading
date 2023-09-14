@@ -1,5 +1,6 @@
 export default interface Statistics {
-  investors: [];
-  transactions: [];
-  money: [];
+  [key: string]: {
+    value: number;
+    name: string;
+  }[];
 }

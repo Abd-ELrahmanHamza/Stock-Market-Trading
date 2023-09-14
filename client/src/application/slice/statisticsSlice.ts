@@ -7,11 +7,7 @@ const initialState: {
   status: string;
   error: string | null;
 } = {
-  statistics: {
-    investors: [],
-    transactions: [],
-    money: [],
-  },
+  statistics: {},
   status: "idle",
   error: null,
 };
