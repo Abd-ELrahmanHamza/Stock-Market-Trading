@@ -54,7 +54,7 @@ const InvestorCompanies = () => {
         <Grid item xs={1} md={1}>
           <Card>
             <CompaniesAccordion
-              stocks={stocks}
+              stocks={stocks.stocks}
               handleSelectCompany={handleSelectCompany}
             />
           </Card>

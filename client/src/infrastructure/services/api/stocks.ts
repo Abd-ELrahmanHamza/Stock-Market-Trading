@@ -13,4 +13,17 @@ const postStocks = async (data: any) => {
   });
 };
 
-export { postStocks };
+const getStocks = async () => {
+  return fetchData({
+    axiosInstance: axiosInstance,
+    method: "GET",
+    url: `/stocks/`,
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
+      },
+    },
+  });
+};
+
+export { postStocks, getStocks };

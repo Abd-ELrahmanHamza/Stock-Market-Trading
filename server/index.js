@@ -81,6 +81,24 @@ app.post("/companiesRecords", (req, res) => {
   );
 });
 
+app.get("/companiesRecords", (req, res) => {
+  const companiesRecords = fs.readFileSync("companiesRecords.json", "utf8");
+  res.send(companiesRecords);
+});
+
+app.post("/company", (req, res) => {
+  const company = req.body;
+  // Save the user data to a file (e.g., users.json)
+  fs.writeFile("company.json", JSON.stringify(company), (err) => {
+    if (err) {
+      console.error("Error saving user data:", err);
+      res.status(500).send("Error saving user data");
+    } else {
+      res.status(201).send("User data saved successfully");
+    }
+  });
+});
+
 // Endpoint for user data
 app.post("/stocks", (req, res) => {
   const companiesRecords = req.body;
@@ -93,6 +111,11 @@ app.post("/stocks", (req, res) => {
       res.status(201).send("User data saved successfully");
     }
   });
+});
+
+app.get("/stocks", (req, res) => {
+  const stocks = fs.readFileSync("stocks.json", "utf8");
+  res.send(stocks);
 });
 
 const handleTransactions = (paramData, paramUsername, res) => {

@@ -1,25 +1,29 @@
 {
   "Abdelrahman": {
     "name": "Abdelrahman",
-    "stocksCount": 242,
-    "money": 996,
+    "stocksCount": 246,
+    "money": 988,
     "stocks": [
       {
-        "name": "Google",
+        "name": "Apple",
+        "count": 2,
+        "price": 2
+      },
+      {
+        "name": "Facebook",
+        "count": 2,
+        "price": 2
+      },
+      {
+        "name": "Microsoft",
         "count": 2,
         "price": 2
       }
     ],
     "profit": {
-      "5:25:16": 54,
-      "5:25:24": 98,
-      "5:25:25": 104,
-      "5:25:37": 26,
-      "5:25:45": 24,
-      "5:25:55": 18,
-      "5:26:5": 2,
-      "5:26:15": 12,
-      "5:26:25": 6
+      "19:1:42": 108,
+      "19:1:47": 98,
+      "19:1:57": 98
     },
     "role": "investor"
   },
@@ -138,5 +142,61 @@
     "stocks": [],
     "profit": {},
     "stocksCount": 0
+  },
+  "amin": {
+    "name": "amin",
+    "role": "admin",
+    "money": 0,
+    "stocks": [],
+    "profit": {},
+    "stocksCount": 0
+  },
+  "omar": {
+    "name": "omar",
+    "role": "investor",
+    "money": 984,
+    "stocks": [
+      {
+        "name": "Google",
+        "count": 2,
+        "price": 2
+      },
+      {
+        "name": "Microsoft",
+        "count": 2,
+        "price": 2
+      },
+      {
+        "name": "Apple",
+        "count": 2,
+        "price": 2
+      },
+      {
+        "name": "Facebook",
+        "count": 2,
+        "price": 2
+      }
+    ],
+    "profit": {
+      "18:44:3": 130,
+      "18:44:7": 108,
+      "18:44:17": 92,
+      "18:44:27": 76,
+      "18:44:37": 90,
+      "18:44:46": 90,
+      "18:44:49": 84,
+      "18:44:53": 84,
+      "18:44:57": 72,
+      "18:45:7": 58,
+      "18:45:17": 68,
+      "18:45:27": 24,
+      "18:45:37": -6,
+      "18:45:47": -22,
+      "18:45:57": -8,
+      "18:46:42": -12,
+      "18:47:42": -30,
+      "18:48:5": -4
+    },
+    "stocksCount": 8
   }
 }

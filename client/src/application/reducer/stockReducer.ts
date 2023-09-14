@@ -1,11 +1,11 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import Stock from "../../domain/entities/stock";
+import Stock, { StockState } from "../../domain/entities/stock";
 
-const buyStockReducer = (state: Stock[], action: PayloadAction<Stock>) => {
+const buyStockReducer = (state: StockState, action: PayloadAction<Stock>) => {
   if (action.payload.price < 0 || action.payload.count < 0) return state;
 
   //   let indexToRemove = -1;
-  const resultState = state.map((stock, index) => {
+  const resultState = state.stocks.map((stock, index) => {
     if (stock.name === action.payload.name) {
       //   if (stock.count === action.payload.count) indexToRemove = index;
       return {
@@ -16,20 +16,24 @@ const buyStockReducer = (state: Stock[], action: PayloadAction<Stock>) => {
     return stock;
   });
   //   if (indexToRemove !== -1) resultState.splice(indexToRemove, 1);
-  return resultState;
+  return { stocks: resultState, status: "idle", error: null };
 };
 
-const sellStockReducer = (state: Stock[], action: PayloadAction<Stock>) => {
+const sellStockReducer = (state: StockState, action: PayloadAction<Stock>) => {
   if (action.payload.price < 0 || action.payload.count < 0) return state;
-  return state.map((stock) => {
-    if (stock.name === action.payload.name) {
-      return {
-        ...stock,
-        count: stock.count + action.payload.count,
-      };
-    }
-    return stock;
-  });
+  return {
+    stocks: state.stocks.map((stock) => {
+      if (stock.name === action.payload.name) {
+        return {
+          ...stock,
+          count: stock.count + action.payload.count,
+        };
+      }
+      return stock;
+    }),
+    status: "idle",
+    error: null,
+  };
 };
 
 export { buyStockReducer, sellStockReducer };

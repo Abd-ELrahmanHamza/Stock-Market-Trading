@@ -8,13 +8,6 @@
       "type": "buy"
     },
     {
-      "company": "Google",
-      "amount": 2,
-      "price": 2,
-      "date": "2023-09-14",
-      "type": "buy"
-    },
-    {
       "company": "Facebook",
       "amount": 2,
       "price": 2,
@@ -27,27 +20,6 @@
       "price": 2,
       "date": "2023-09-14",
       "type": "buy"
-    },
-    {
-      "company": "Apple",
-      "amount": 2,
-      "price": 2,
-      "date": "2023-09-14",
-      "type": "sell"
-    },
-    {
-      "company": "Facebook",
-      "amount": 2,
-      "price": 2,
-      "date": "2023-09-14",
-      "type": "sell"
-    },
-    {
-      "company": "Microsoft",
-      "amount": 2,
-      "price": 2,
-      "date": "2023-09-14",
-      "type": "sell"
     }
   ],
   "ahmed": [
@@ -185,6 +157,36 @@
       "price": 2,
       "date": "2023-09-14",
       "type": "sell"
+    }
+  ],
+  "omar": [
+    {
+      "company": "Google",
+      "amount": 2,
+      "price": 2,
+      "date": "2023-09-14",
+      "type": "buy"
+    },
+    {
+      "company": "Microsoft",
+      "amount": 2,
+      "price": 2,
+      "date": "2023-09-14",
+      "type": "buy"
+    },
+    {
+      "company": "Apple",
+      "amount": 2,
+      "price": 2,
+      "date": "2023-09-14",
+      "type": "buy"
+    },
+    {
+      "company": "Facebook",
+      "amount": 2,
+      "price": 2,
+      "date": "2023-09-14",
+      "type": "buy"
     }
   ]
 }

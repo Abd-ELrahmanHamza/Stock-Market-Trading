@@ -11,7 +11,7 @@ const setStocksMiddleware =
       action.type === "stocks/buyStock"
     ) {
       const currentState = store.getState();
-      api.postStocks(currentState.companies);
+      api.postStocks(currentState.stocks);
     }
   };
 

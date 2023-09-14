@@ -1,5 +1,5 @@
 import { postCompaniesRecords } from "./companies";
-import { postStocks } from "./stocks";
+import { getStocks, postStocks } from "./stocks";
 import { postTransactions } from "./transactions";
 import { postUser } from "./user";
 
@@ -8,6 +8,7 @@ interface Api {
   postStocks: typeof postStocks;
   postTransactions: typeof postTransactions;
   postUser: typeof postUser;
+  getStocks: typeof getStocks;
 }
 
 const api: Api = {
@@ -15,6 +16,7 @@ const api: Api = {
   postStocks: postStocks,
   postTransactions: postTransactions,
   postUser,
+  getStocks,
 };
 export default api;
 export type { Api };

@@ -12,6 +12,7 @@ import { fetchCompanies } from "../../../application/slice/companiesSlice";
 import Stocks from "../../features/Stocks";
 import CenterBox from "../../components/CenterBox";
 import LineChart from "../../components/LineChart";
+import { fetchStocks } from "../../../application/slice/stocksSlice";
 
 const TransactionsContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -28,19 +29,18 @@ const StyledTitle = styled(Typography)(({ theme }) => ({
 
 const AdminCompanies = () => {
   const [selectedCompany, setSelectedCompany] = React.useState<string>("");
-  const [stocks, setStocks] = React.useState("");
+  const [stocksCount, setStocksCount] = React.useState("");
   const [price, setPrice] = React.useState("");
   const [companyStockRecords, setCompanyStockRecords] = React.useState<
     { name: string; value: number }[]
   >([]);
   const dispatch = useAppDispatch();
 
-  const { companies, status, error } = useAppSelector(
-    (state) => state.companies
-  );
+  const companies = useAppSelector((state) => state.companies);
+  const stocks = useAppSelector((state) => state.stocks);
 
   const handleStocksChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStocks(event.target.value);
+    setStocksCount(event.target.value);
   };
 
   const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +49,7 @@ const AdminCompanies = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setStocks("");
+    setStocksCount("");
     setPrice("");
   };
   const handleOptionChange = (
@@ -60,9 +60,14 @@ const AdminCompanies = () => {
   };
 
   React.useEffect(() => {
-    if (!companies || !companies[selectedCompany || ""]) return;
+    if (
+      !companies ||
+      !companies.companies ||
+      !companies.companies[selectedCompany || ""]
+    )
+      return;
     setCompanyStockRecords(
-      companies[selectedCompany || ""].map((record) => ({
+      companies.companies[selectedCompany || ""].map((record) => ({
         name: record.date,
         value: record.value,
       }))
@@ -70,7 +75,18 @@ const AdminCompanies = () => {
   }, [selectedCompany, companies]);
   React.useEffect(() => {
     dispatch(fetchCompanies());
+    dispatch(fetchStocks());
   }, [dispatch]);
+  console.log("companies", companies);
+  React.useEffect(() => {
+    if (!stocks || !stocks.stocks || !selectedCompany) return;
+    const companyStockIndex = stocks.stocks.findIndex(
+      (stock) => stock.name === selectedCompany
+    );
+    if (companyStockIndex === -1) return;
+    setPrice(stocks.stocks[companyStockIndex].price.toString());
+    setStocksCount(stocks.stocks[companyStockIndex].count.toString());
+  }, [stocks, selectedCompany]);
   return (
     <TransactionsContainer>
       <Card
@@ -82,9 +98,9 @@ const AdminCompanies = () => {
         }}
       >
         <StyledTitle variant="h4">Select a company</StyledTitle>
-        {companies && (
+        {companies && companies.companies && (
           <AutocompleteDropDown
-            options={Object.keys(companies)}
+            options={Object.keys(companies.companies)}
             handleOptionChange={handleOptionChange}
           />
         )}
@@ -106,7 +122,7 @@ const AdminCompanies = () => {
               handleSubmit={handleSubmit}
               handleStocksChange={handleStocksChange}
               handlePriceChange={handlePriceChange}
-              stocks={stocks}
+              stocks={stocksCount}
               price={price}
             />
           </Box>

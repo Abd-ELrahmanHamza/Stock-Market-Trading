@@ -52,7 +52,7 @@ const InvestorStocks = () => {
             Buy Stocks
           </Typography>
           <Stocks
-            stocks={companiesStocks}
+            stocks={companiesStocks.stocks}
             ActionComponent={BuyButton}
             handleAction={handleBuyStocks}
             actionText="Buy"

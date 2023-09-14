@@ -3,3 +3,9 @@ export default interface Stock {
   count: number;
   price: number;
 }
+
+export interface StockState {
+  stocks: Stock[];
+  status: string;
+  error: string | null;
+}
