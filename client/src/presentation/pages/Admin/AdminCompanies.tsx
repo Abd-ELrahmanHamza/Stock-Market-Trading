@@ -11,6 +11,7 @@ import { fetchCompanies } from "../../../application/slice/companiesSlice";
 import CenterBox from "../../components/CenterBox";
 import LineChart from "../../components/LineChart";
 import { fetchStocks } from "../../../application/slice/stocksSlice";
+import { updateStockUtil } from "../../../application/utils/stocks";
 
 const TransactionsContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -47,8 +48,11 @@ const AdminCompanies = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setStocksCount("");
-    setPrice("");
+    updateStockUtil({
+      name: selectedCompany,
+      count: parseInt(stocksCount),
+      price: parseInt(price),
+    });
   };
   const handleOptionChange = (
     event: React.SyntheticEvent<Element, Event>,

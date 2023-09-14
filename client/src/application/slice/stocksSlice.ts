@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { StockState } from "../../domain/entities/stock";
-import { buyStockReducer, sellStockReducer } from "../reducer/stockReducer";
+import {
+  buyStockReducer,
+  sellStockReducer,
+  updateStockReducer,
+} from "../reducer/stockReducer";
 import { getStocks } from "../../infrastructure/services/api/stocks";
 
 const initialState: StockState = {
@@ -56,6 +60,7 @@ export const stocksSlice = createSlice({
   reducers: {
     buyStock: buyStockReducer,
     sellStock: sellStockReducer,
+    updateStock: updateStockReducer,
   },
   extraReducers(builder) {
     builder
@@ -74,6 +79,6 @@ export const stocksSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { buyStock, sellStock } = stocksSlice.actions;
+export const { buyStock, sellStock, updateStock } = stocksSlice.actions;
 
 export default stocksSlice.reducer;

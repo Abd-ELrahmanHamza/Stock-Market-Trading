@@ -8,6 +8,9 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import WalletIcon from "@mui/icons-material/Wallet";
 import PaidIcon from "@mui/icons-material/Paid";
+import { useAppDispatch } from "../../../application/hooks";
+import { fetchCompanies } from "../../../application/slice/companiesSlice";
+import { fetchStocks } from "../../../application/slice/stocksSlice";
 
 const Container = styled(Box)({
   display: "flex",
@@ -45,6 +48,11 @@ const navigationList = [
 export default function Investor() {
   const [open, setOpen] = React.useState(true);
 
+  const dispatch = useAppDispatch();
+  React.useEffect(() => {
+    dispatch(fetchCompanies());
+    dispatch(fetchStocks());
+  }, [dispatch]);
   const toggleDrawer = () => {
     setOpen((prev) => !prev);
   };

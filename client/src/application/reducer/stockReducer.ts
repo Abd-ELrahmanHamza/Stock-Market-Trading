@@ -36,4 +36,26 @@ const sellStockReducer = (state: StockState, action: PayloadAction<Stock>) => {
   };
 };
 
-export { buyStockReducer, sellStockReducer };
+const updateStockReducer = (
+  state: StockState,
+  action: PayloadAction<Stock>
+) => {
+  console.log(action.payload,"stock updated");
+  if (action.payload.price < 0 || action.payload.count < 0) return state;
+  return {
+    stocks: state.stocks.map((stock) => {
+      if (stock.name === action.payload.name) {
+        return {
+          ...stock,
+          count: action.payload.count,
+          price: action.payload.price,
+        };
+      }
+      return stock;
+    }),
+    status: "idle",
+    error: null,
+  };
+};
+
+export { buyStockReducer, sellStockReducer, updateStockReducer };

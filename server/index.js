@@ -118,6 +118,47 @@ app.get("/stocks", (req, res) => {
   res.send(stocks);
 });
 
+const handleAddStock = (stock, res) => {
+  // Specify the path to your JSON file
+  const filePath = `${__dirname}/stocks.json`;
+  const nameToModify = stock.name; // Replace with the username you want to modify
+  const newValue = stock; // Replace with the new value
+  // Read the JSON file
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err && err.code !== "ENOENT") {
+      console.error("Error reading JSON file:", err);
+      res.status(500).send("Error reading JSON file");
+      return;
+    }
+    const jsonData = JSON.parse(data);
+    const stocksData = jsonData["stocks"];
+    const stockIndex = stocksData.findIndex(
+      (stock) => stock.name === nameToModify
+    );
+    if (stockIndex === -1) {
+      stocksData.push(newValue);
+    } else {
+      stocksData[stockIndex] = newValue;
+    }
+    jsonData["stocks"] = stocksData;
+    // Convert the updated array back to a JSON string
+    const updatedJsonString = JSON.stringify(jsonData, null, 2); // The `null, 2` argument formats the JSON with 2 spaces for readability
+    // Write the updated JSON back to the file
+    fs.writeFile(filePath, updatedJsonString, "utf8", (writeErr) => {
+      if (writeErr) {
+        console.error("Error writing JSON file:", writeErr);
+        res.status(500).send("Error writing JSON file");
+        return;
+      }
+      console.log("JSON file updated successfully.");
+      res.status(201).send("User data saved successfully");
+    });
+  });
+};
+app.post("/stock", (req, res) => {
+  const stock = req.body;
+  handleAddStock(stock, res);
+});
 app.get("/statistics", (req, res) => {
   const statistics = fs.readFileSync("statistics.json", "utf8");
   res.send(statistics);

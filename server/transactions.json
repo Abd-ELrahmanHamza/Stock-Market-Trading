@@ -2,20 +2,13 @@
   "Abdelrahman": [
     {
       "company": "Google",
-      "amount": 2,
+      "amount": 22,
       "price": 2,
       "date": "2023-09-14",
       "type": "buy"
     },
     {
-      "company": "Apple",
-      "amount": 2,
-      "price": 2,
-      "date": "2023-09-14",
-      "type": "buy"
-    },
-    {
-      "company": "Microsoft",
+      "company": "Facebook",
       "amount": 2,
       "price": 2,
       "date": "2023-09-14",

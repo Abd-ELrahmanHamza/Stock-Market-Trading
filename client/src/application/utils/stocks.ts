@@ -2,6 +2,7 @@ import Stock from "../../domain/entities/stock";
 import {
   buyStock as buyStockStocks,
   sellStock as sellStockStocks,
+  updateStock,
 } from "../slice/stocksSlice";
 import { addTransaction } from "../slice/transactionsSlice";
 import {
@@ -43,4 +44,8 @@ const sellStockUtil = (stock: Stock) => {
   );
 };
 
-export { buyStockUtil, sellStockUtil };
+const updateStockUtil = (stock: Stock) => {
+  store.dispatch(updateStock(stock));
+};
+
+export { buyStockUtil, sellStockUtil, updateStockUtil };
