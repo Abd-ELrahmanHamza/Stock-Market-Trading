@@ -1,0 +1,142 @@
+{
+  "Abdelrahman": {
+    "name": "Abdelrahman",
+    "stocksCount": 242,
+    "money": 996,
+    "stocks": [
+      {
+        "name": "Google",
+        "count": 2,
+        "price": 2
+      }
+    ],
+    "profit": {
+      "5:25:16": 54,
+      "5:25:24": 98,
+      "5:25:25": 104,
+      "5:25:37": 26,
+      "5:25:45": 24,
+      "5:25:55": 18,
+      "5:26:5": 2,
+      "5:26:15": 12,
+      "5:26:25": 6
+    },
+    "role": "investor"
+  },
+  "newadmin": {
+    "name": "newadmin",
+    "role": "admin",
+    "money": 0,
+    "stocks": [],
+    "profit": {},
+    "stocksCount": 0
+  },
+  "ahmed": {
+    "name": "ahmed",
+    "role": "investor",
+    "money": 988,
+    "stocks": [
+      {
+        "name": "Apple",
+        "count": 2,
+        "price": 2
+      },
+      {
+        "name": "Facebook",
+        "count": 2,
+        "price": 2
+      },
+      {
+        "name": "Microsoft",
+        "count": 2,
+        "price": 2
+      }
+    ],
+    "profit": {},
+    "stocksCount": 6
+  },
+  "ali": {
+    "name": "ali",
+    "role": "investor",
+    "money": 0,
+    "stocks": [],
+    "profit": {},
+    "stocksCount": 0
+  },
+  "mohamed": {
+    "name": "mohamed",
+    "role": "investor",
+    "money": 0,
+    "stocks": [],
+    "profit": {},
+    "stocksCount": 0
+  },
+  "dddddd": {
+    "name": "dddddd",
+    "role": "investor",
+    "money": 0,
+    "stocks": [],
+    "profit": {},
+    "stocksCount": 0
+  },
+  "asdsadad": {
+    "name": "asdsadad",
+    "role": "investor",
+    "money": 0,
+    "stocks": [],
+    "profit": {},
+    "stocksCount": 0
+  },
+  "Apple": {
+    "name": "Apple",
+    "count": 2,
+    "price": 2
+  },
+  "Facebook": {
+    "name": "Facebook",
+    "count": 2,
+    "price": 2
+  },
+  "abdelrahman": {
+    "name": "abdelrahman",
+    "role": "investor",
+    "money": 0,
+    "stocks": [],
+    "profit": {},
+    "stocksCount": 0
+  },
+  "Google": {
+    "name": "Google",
+    "count": 2,
+    "price": 2
+  },
+  "Microsoft": {
+    "name": "Microsoft",
+    "count": 2,
+    "price": 2
+  },
+  "very new new user": {
+    "name": "very new new user",
+    "role": "investor",
+    "money": 0,
+    "stocks": [],
+    "profit": {},
+    "stocksCount": 0
+  },
+  "admin": {
+    "name": "admin",
+    "role": "admin",
+    "money": 0,
+    "stocks": [],
+    "profit": {},
+    "stocksCount": 0
+  },
+  "uuu": {
+    "name": "uuu",
+    "role": "investor",
+    "money": 1221,
+    "stocks": [],
+    "profit": {},
+    "stocksCount": 0
+  }
+}
