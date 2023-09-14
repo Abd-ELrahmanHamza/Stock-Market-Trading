@@ -6,4 +6,7 @@ interface Transaction {
   price: number;
 }
 
-export type { Transaction };
+interface UsersTransactions {
+  [key: string]: Transaction[];
+}
+export type { Transaction, UsersTransactions };

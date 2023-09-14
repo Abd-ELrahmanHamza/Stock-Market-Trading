@@ -1,5 +1,5 @@
 const log = (message: string) => {
-  console.log(message);
+  console.log("Logging service ", message);
 };
 
 export default log;

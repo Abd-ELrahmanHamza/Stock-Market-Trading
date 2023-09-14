@@ -13,4 +13,17 @@ const postTransactions = async (data: any, userName: string) => {
   });
 };
 
-export { postTransactions };
+const getTransactions = async () => {
+  return fetchData({
+    axiosInstance: axiosInstance,
+    method: "GET",
+    url: `/usersTransactions/`,
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
+      },
+    },
+  });
+};
+
+export { postTransactions, getTransactions };

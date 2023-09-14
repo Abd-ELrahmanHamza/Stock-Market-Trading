@@ -21,9 +21,14 @@ const StyledNoPadCard = styled(Paper)(({ theme }) => ({
 
 interface CardProps {
   children: React.ReactNode;
+  props?: any;
 }
-const Card = ({ children }: CardProps) => {
-  return <StyledCard elevation={7}>{children}</StyledCard>;
+const Card = ({ children, props }: CardProps) => {
+  return (
+    <StyledCard {...props} elevation={7}>
+      {children}
+    </StyledCard>
+  );
 };
 
 const NoPadCard = ({ children }: CardProps) => {

@@ -5,12 +5,14 @@ const setTransactionsMiddleware =
   (store: any) =>
   (next: any) =>
   (action: any) => {
-    if (action.type === "transactions/addTransaction") {
-      console.log("setTransactionsMiddleware", action.type);
-      const currentState = store.getState();
-      api.postTransactions(currentState.companies, store.getState().user.name);
-    }
     next(action);
+    if (action.type === "transactions/addTransaction") {
+      const currentState = store.getState();
+      api.postTransactions(
+        currentState.transactions,
+        store.getState().user.name
+      );
+    }
   };
 
 export default [setTransactionsMiddleware];

@@ -5,11 +5,11 @@ const setCompaniesStockRecordsMiddleware =
   (store: any) =>
   (next: any) =>
   (action: any) => {
+    next(action);
     if (action.type === "companies/setCompaniesStockRecords") {
       const currentState = store.getState();
       api.postCompaniesRecords(currentState.companies);
     }
-    next(action);
   };
 
 export default [setCompaniesStockRecordsMiddleware];

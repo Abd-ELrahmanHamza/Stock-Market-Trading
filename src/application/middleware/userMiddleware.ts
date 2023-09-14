@@ -5,6 +5,8 @@ const setUserMiddleware =
   (store: any) =>
   (next: any) =>
   (action: any) => {
+    next(action);
+
     if (
       action.type === "user/addMoney" ||
       action.type === "user/buyStock" ||
@@ -15,7 +17,6 @@ const setUserMiddleware =
       const currentState = store.getState();
       api.postUser(currentState.user);
     }
-    next(action);
   };
 
 export default [setUserMiddleware];

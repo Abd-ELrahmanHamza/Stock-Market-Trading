@@ -8,3 +8,8 @@ export default interface User {
   profit: { [key: string]: number };
   role: "investor" | "admin";
 }
+interface Users {
+  [key: string]: User;
+}
+
+export type { Users };

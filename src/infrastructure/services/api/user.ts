@@ -14,4 +14,17 @@ const postUser = async (data: any) => {
   });
 };
 
-export { postUser };
+const getUsers = async () => {
+  return fetchData({
+    axiosInstance: axiosInstance,
+    method: "GET",
+    url: `/user/`,
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
+      },
+    },
+  });
+};
+
+export { postUser, getUsers };

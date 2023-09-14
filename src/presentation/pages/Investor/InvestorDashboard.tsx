@@ -23,6 +23,8 @@ const InvestorDashboard = () => {
   const user = useAppSelector((state) => state.user);
   const companies = useAppSelector((state) => state.companies);
   const userProfit = useAppSelector((state) => state.user.profit);
+  const transactions = useAppSelector((state) => state.transactions);
+
   const [performanceDataGraph, setPerformanceDataGraph] = React.useState<
     { name: string; value: number }[]
   >([]);
@@ -100,7 +102,7 @@ const InvestorDashboard = () => {
         </StyledCardGrid>
       </StyledGrid>
       <Card>
-        <Transactions />
+        <Transactions transactions={transactions} />
       </Card>
     </Box>
   );

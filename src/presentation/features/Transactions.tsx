@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import { Box, Typography } from "@mui/material";
 import { CustomTablePagination } from "../components/CustomTablePagination";
 import { useAppSelector } from "../../application/hooks";
+import { Transaction } from "../../domain/entities/transactions";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -24,11 +25,13 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-
-export default function Transactions() {
+export default function Transactions({
+  transactions,
+}: {
+  transactions: Transaction[];
+}) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(4);
-  const transactions = useAppSelector((state) => state.transactions);
   const handleChangePage = (
     _: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number
