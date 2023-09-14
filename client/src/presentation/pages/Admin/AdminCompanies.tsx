@@ -75,7 +75,6 @@ const AdminCompanies = () => {
     dispatch(fetchCompanies());
     dispatch(fetchStocks());
   }, [dispatch]);
-  console.log("companies", companies);
   React.useEffect(() => {
     if (!stocks || !stocks.stocks || !selectedCompany) return;
     const companyStockIndex = stocks.stocks.findIndex(
