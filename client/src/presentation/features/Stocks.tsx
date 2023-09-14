@@ -72,7 +72,9 @@ export default function Stocks({
               <StyledTableCell>Company</StyledTableCell>
               <StyledTableCell align="right">Count</StyledTableCell>
               <StyledTableCell align="right">Price</StyledTableCell>
-              <StyledTableCell align="right">Action</StyledTableCell>
+              {ActionComponent && (
+                <StyledTableCell align="right">Action</StyledTableCell>
+              )}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -88,13 +90,15 @@ export default function Stocks({
                   </StyledTableCell>
                   <StyledTableCell align="right">{stock.count}</StyledTableCell>
                   <StyledTableCell align="right">{stock.price}</StyledTableCell>
-                  <StyledTableCell align="right">
-                    <ActionComponent
-                      props={{ onClick: () => handleAction(stock) }}
-                    >
-                      {actionText}
-                    </ActionComponent>
-                  </StyledTableCell>
+                  {ActionComponent && (
+                    <StyledTableCell align="right">
+                      <ActionComponent
+                        props={{ onClick: () => handleAction(stock) }}
+                      >
+                        {actionText}
+                      </ActionComponent>
+                    </StyledTableCell>
+                  )}
                 </StyledTableRow>
               ))}
           </TableBody>

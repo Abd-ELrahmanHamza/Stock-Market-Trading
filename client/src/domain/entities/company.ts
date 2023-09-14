@@ -7,4 +7,9 @@ interface CompaniesRecords {
   [key: string]: CompanyStockRecord[];
 }
 
-export type { CompanyStockRecord, CompaniesRecords };
+interface CompaniesState {
+  companies: CompaniesRecords;
+  status: string;
+  error: string | null;
+}
+export type { CompanyStockRecord, CompaniesRecords, CompaniesState };

@@ -7,6 +7,7 @@ import InvestorWallet from "../pages/Investor/InvestorWallet";
 import SignInSide from "../pages/Common/Login";
 import Admin from "../pages/Admin/Admin";
 import AdminTransactions from "../pages/Admin/AdminTransactions";
+import AdminCompanies from "../pages/Admin/AdminCompanies";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
       },
       {
         path: "companies",
-        element: <div>Companies</div>,
+        element: <AdminCompanies />,
       },
     ],
   },

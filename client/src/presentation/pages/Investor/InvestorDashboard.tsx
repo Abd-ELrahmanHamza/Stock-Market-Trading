@@ -21,7 +21,7 @@ const StyledCardGrid = styled(Grid)(({ theme }) => ({
 const InvestorDashboard = () => {
   const navigate = useNavigate();
   const user = useAppSelector((state) => state.user);
-  const companies = useAppSelector((state) => state.companies);
+  const companies = useAppSelector((state) => state.companies.companies);
   const userProfit = useAppSelector((state) => state.user.profit);
   const transactions = useAppSelector((state) => state.transactions);
 

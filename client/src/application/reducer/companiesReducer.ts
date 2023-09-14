@@ -1,11 +1,18 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { CompaniesRecords } from "../../domain/entities/company";
+import {
+  CompaniesRecords,
+  CompaniesState,
+} from "../../domain/entities/company";
 
 const setCompaniesStockRecordsReducer = (
-  state: CompaniesRecords,
+  state: CompaniesState,
   action: PayloadAction<CompaniesRecords>
-): CompaniesRecords => {
-  return JSON.parse(JSON.stringify(action.payload));
+): CompaniesState => {
+  return {
+    companies: JSON.parse(JSON.stringify(action.payload)),
+    status: "idle",
+    error: null,
+  };
 };
 
 export { setCompaniesStockRecordsReducer };

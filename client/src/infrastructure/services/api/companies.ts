@@ -13,4 +13,17 @@ const postCompaniesRecords = async (data: any) => {
   });
 };
 
-export { postCompaniesRecords };
+const getCompaniesRecords = async () => {
+  return fetchData({
+    axiosInstance: axiosInstance,
+    method: "GET",
+    url: `/companiesRecords/`,
+    requestConfig: {
+      headers: {
+        "Content-Language": "en-US",
+      },
+    },
+  });
+};
+
+export { postCompaniesRecords, getCompaniesRecords };

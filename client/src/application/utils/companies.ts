@@ -6,7 +6,9 @@ const randomlyUpdateCompanyRecord = (
   minRandomValue: number,
   maxRandomValue: number
 ) => {
-  const data = JSON.parse(JSON.stringify(store.getState().companies));
+  if (!store.getState().companies || !store.getState().companies.companies)
+    return;
+  const data = JSON.parse(JSON.stringify(store.getState().companies.companies));
   // Iterate over each company in the object
   for (const company in data) {
     const lastValue: CompanyStockRecord =

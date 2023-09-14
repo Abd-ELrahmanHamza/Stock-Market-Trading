@@ -13,7 +13,7 @@ const CompanyName = styled(Typography)(({ theme }) => ({
 
 const InvestorCompanies = () => {
   const stocks = useAppSelector((state) => state.stocks);
-  const companies = useAppSelector((state) => state.companies);
+  const companies = useAppSelector((state) => state.companies.companies);
   const [selectedCompany, setSelectedCompany] = React.useState<string | false>(
     false
   );
@@ -30,7 +30,7 @@ const InvestorCompanies = () => {
   }, [companies, selectedCompany]);
 
   useEffect(() => {
-    if (!companies[selectedCompany || ""]) return;
+    if (!companies || !companies[selectedCompany || ""]) return;
     setCompanyStockRecords(
       companies[selectedCompany || ""].map((record) => ({
         name: record.date,
