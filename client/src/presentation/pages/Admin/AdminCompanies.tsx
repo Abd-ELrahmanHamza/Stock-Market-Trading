@@ -1,6 +1,5 @@
 import AutocompleteDropDown from "../../components/Autocomplete";
 import { Card } from "../../components/Card";
-import Transactions from "../../features/Transactions";
 import { Box } from "@mui/system";
 import styled from "@mui/material/styles/styled";
 import Typography from "@mui/material/Typography";
@@ -9,7 +8,6 @@ import { InfoAlert } from "../../components/Alerts";
 import { useAppDispatch, useAppSelector } from "../../../application/hooks";
 import AdminCompanyForm from "../../features/AdminCompanyForm";
 import { fetchCompanies } from "../../../application/slice/companiesSlice";
-import Stocks from "../../features/Stocks";
 import CenterBox from "../../components/CenterBox";
 import LineChart from "../../components/LineChart";
 import { fetchStocks } from "../../../application/slice/stocksSlice";
@@ -143,7 +141,6 @@ const AdminCompanies = () => {
             <LineChart dataSet={companyStockRecords} />
           </CenterBox>
         ) : (
-          //   <Stocks stocks={companies[selectedCompany]} />
           <InfoAlert text={`Select a company to show it's stocks`} />
         )}
       </Card>

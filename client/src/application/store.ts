@@ -7,6 +7,7 @@ import middlewares from "./middleware";
 import services from "../infrastructure/services";
 import usersSlice from "./slice/usersSlice";
 import usersTransactionsSlice from "./slice/usersTransactionsSlice";
+import statisticsSlice from "./slice/statisticsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     transactions: transactionsSlice,
     users: usersSlice,
     usersTransactions: usersTransactionsSlice,
+    statistics: statisticsSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(

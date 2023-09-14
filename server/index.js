@@ -118,6 +118,11 @@ app.get("/stocks", (req, res) => {
   res.send(stocks);
 });
 
+app.get("/statistics", (req, res) => {
+  const statistics = fs.readFileSync("statistics.json", "utf8");
+  res.send(statistics);
+});
+
 const handleTransactions = (paramData, paramUsername, res) => {
   // Specify the path to your JSON file
   const filePath = `${__dirname}/transactions.json`;

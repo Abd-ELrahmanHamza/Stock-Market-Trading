@@ -8,6 +8,7 @@ import SignInSide from "../pages/Common/Login";
 import Admin from "../pages/Admin/Admin";
 import AdminTransactions from "../pages/Admin/AdminTransactions";
 import AdminCompanies from "../pages/Admin/AdminCompanies";
+import AdminStatistics from "../pages/Admin/AdminStatistics";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <div>Statistics</div>,
+        element: <AdminStatistics />,
       },
       {
         path: "transactions",
