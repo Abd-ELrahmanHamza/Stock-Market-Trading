@@ -62,7 +62,16 @@ export default function Stocks({
   };
 
   return (
-    <Card>
+    <Card
+      props={{
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+      }}
+    >
       <BuyStocksDialog
         open={openDialog}
         handleClose={handleDialogClose}

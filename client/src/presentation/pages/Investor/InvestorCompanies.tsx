@@ -46,6 +46,9 @@ const InvestorCompanies = () => {
       <Grid container spacing={3} columns={{ xs: 1, md: 1, lg: 4 }}>
         <Grid item xs={1} md={3}>
           <Card>
+            <Typography variant="h5" textAlign={"center"}>
+              Stocks price over time (Updated every 10 seconds)
+            </Typography>
             <CenterBox>
               <LineChart dataSet={companyStockRecords} />
             </CenterBox>

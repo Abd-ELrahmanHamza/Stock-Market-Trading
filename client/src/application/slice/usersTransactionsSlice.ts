@@ -7,7 +7,52 @@ const initialState: {
   status: string;
   error: string | null;
 } = {
-  usersTransactions: {},
+  usersTransactions: {
+    Abdelrahman: [
+      {
+        company: "Apple",
+        amount: 32,
+        price: 2,
+        date: "2023-09-15",
+        type: "buy",
+      },
+      {
+        company: "Apple",
+        amount: 32,
+        price: 2,
+        date: "2023-09-15",
+        type: "buy",
+      },
+      {
+        company: "Apple",
+        amount: 32,
+        price: 2,
+        date: "2023-09-15",
+        type: "buy",
+      },
+      {
+        company: "Apple",
+        amount: 32,
+        price: 2,
+        date: "2023-09-15",
+        type: "buy",
+      },
+      {
+        company: "Apple",
+        amount: 32,
+        price: 2,
+        date: "2023-09-15",
+        type: "buy",
+      },
+      {
+        company: "Apple",
+        amount: 32,
+        price: 2,
+        date: "2023-09-15",
+        type: "buy",
+      },
+    ],
+  },
   status: "idle",
   error: null,
 };

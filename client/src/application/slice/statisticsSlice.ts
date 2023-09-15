@@ -7,7 +7,38 @@ const initialState: {
   status: string;
   error: string | null;
 } = {
-  statistics: {},
+  statistics: {
+    investors: [
+      {
+        name: "20-10-2023",
+        value: 10,
+      },
+      {
+        name: "20-10-2024",
+        value: 20,
+      },
+    ],
+    transactions: [
+      {
+        name: "20-10-2023",
+        value: 10,
+      },
+      {
+        name: "20-10-2024",
+        value: 220,
+      },
+    ],
+    money: [
+      {
+        name: "20-10-2023",
+        value: 10,
+      },
+      {
+        name: "20-10-2024",
+        value: -20,
+      },
+    ],
+  },
   status: "idle",
   error: null,
 };

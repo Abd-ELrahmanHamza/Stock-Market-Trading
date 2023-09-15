@@ -50,6 +50,10 @@ export default function Transactions({
       <TableContainer
         sx={{
           boxShadow: "none",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
         }}
         component={Paper}
       >

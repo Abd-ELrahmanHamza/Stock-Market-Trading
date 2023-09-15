@@ -7,7 +7,36 @@ const initialState: {
   status: string;
   error: string | null;
 } = {
-  users: {},
+  users: {
+    Abdelrahman: {
+      name: "Abdelrahman",
+      stocksCount: 432,
+      money: 616,
+      stocks: [
+        {
+          name: "Apple",
+          count: 192,
+          price: 2,
+        },
+      ],
+      profit: {
+        "6:42:31": -1728,
+        "6:42:42": -2112,
+        "6:42:47": -2304,
+        "6:42:57": -1536,
+        "6:42:58": -1152,
+      },
+      role: "investor",
+    },
+    admin: {
+      name: "admin",
+      role: "admin",
+      money: 0,
+      stocks: [],
+      profit: {},
+      stocksCount: 0,
+    },
+  },
   status: "idle",
   error: null,
 };

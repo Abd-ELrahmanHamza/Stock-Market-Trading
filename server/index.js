@@ -16,42 +16,47 @@ app.use((req, res, next) => {
 });
 
 const handleAddUser = (user, res) => {
-  // Specify the path to your JSON file
-  const filePath = `${__dirname}/user.json`;
-  const userNameToModify = user.name; // Replace with the username you want to modify
-  const newValue = user; // Replace with the new value
-  // Read the JSON file
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err && err.code !== "ENOENT") {
-      console.error("Error reading JSON file:", err);
-      res.status(500).send("Error reading JSON file");
-      return;
-    }
-
-    let jsonData = [];
-
-    if (!err) {
-      // Parse the JSON data into an array
-      jsonData = JSON.parse(data);
-    }
-
-    jsonData[userNameToModify] = newValue;
-
-    // Convert the updated array back to a JSON string
-    const updatedJsonString = JSON.stringify(jsonData, null, 2); // The `null, 2` argument formats the JSON with 2 spaces for readability
-
-    // Write the updated JSON back to the file
-    fs.writeFile(filePath, updatedJsonString, "utf8", (writeErr) => {
-      if (writeErr) {
-        console.error("Error writing JSON file:", writeErr);
-        res.status(500).send("Error writing JSON file");
+  try {
+    // Specify the path to your JSON file
+    const filePath = `${__dirname}/user.json`;
+    const userNameToModify = user.name; // Replace with the username you want to modify
+    const newValue = user; // Replace with the new value
+    // Read the JSON file
+    fs.readFile(filePath, "utf8", (err, data) => {
+      if (err && err.code !== "ENOENT") {
+        console.error("Error reading JSON file:", err);
+        res.status(500).send("Error reading JSON file");
         return;
       }
 
-      console.log("JSON file updated successfully.");
-      res.status(201).send("User data saved successfully");
+      let jsonData = [];
+
+      if (!err) {
+        // Parse the JSON data into an array
+        jsonData = JSON.parse(data);
+      }
+
+      jsonData[userNameToModify] = newValue;
+
+      // Convert the updated array back to a JSON string
+      const updatedJsonString = JSON.stringify(jsonData, null, 2); // The `null, 2` argument formats the JSON with 2 spaces for readability
+
+      // Write the updated JSON back to the file
+      fs.writeFile(filePath, updatedJsonString, "utf8", (writeErr) => {
+        if (writeErr) {
+          console.error("Error writing JSON file:", writeErr);
+          res.status(500).send("Error writing JSON file");
+          return;
+        }
+
+        console.log("JSON file updated successfully.");
+        res.status(201).send("User data saved successfully");
+      });
     });
-  });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Error saving user data");
+  }
 };
 // Endpoint for user data
 app.post("/user", (req, res) => {
@@ -119,41 +124,46 @@ app.get("/stocks", (req, res) => {
 });
 
 const handleAddStock = (stock, res) => {
-  // Specify the path to your JSON file
-  const filePath = `${__dirname}/stocks.json`;
-  const nameToModify = stock.name; // Replace with the username you want to modify
-  const newValue = stock; // Replace with the new value
-  // Read the JSON file
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err && err.code !== "ENOENT") {
-      console.error("Error reading JSON file:", err);
-      res.status(500).send("Error reading JSON file");
-      return;
-    }
-    const jsonData = JSON.parse(data);
-    const stocksData = jsonData["stocks"];
-    const stockIndex = stocksData.findIndex(
-      (stock) => stock.name === nameToModify
-    );
-    if (stockIndex === -1) {
-      stocksData.push(newValue);
-    } else {
-      stocksData[stockIndex] = newValue;
-    }
-    jsonData["stocks"] = stocksData;
-    // Convert the updated array back to a JSON string
-    const updatedJsonString = JSON.stringify(jsonData, null, 2); // The `null, 2` argument formats the JSON with 2 spaces for readability
-    // Write the updated JSON back to the file
-    fs.writeFile(filePath, updatedJsonString, "utf8", (writeErr) => {
-      if (writeErr) {
-        console.error("Error writing JSON file:", writeErr);
-        res.status(500).send("Error writing JSON file");
+  try {
+    // Specify the path to your JSON file
+    const filePath = `${__dirname}/stocks.json`;
+    const nameToModify = stock.name; // Replace with the username you want to modify
+    const newValue = stock; // Replace with the new value
+    // Read the JSON file
+    fs.readFile(filePath, "utf8", (err, data) => {
+      if (err && err.code !== "ENOENT") {
+        console.error("Error reading JSON file:", err);
+        res.status(500).send("Error reading JSON file");
         return;
       }
-      console.log("JSON file updated successfully.");
-      res.status(201).send("User data saved successfully");
+      const jsonData = JSON.parse(data);
+      const stocksData = jsonData["stocks"];
+      const stockIndex = stocksData.findIndex(
+        (stock) => stock.name === nameToModify
+      );
+      if (stockIndex === -1) {
+        stocksData.push(newValue);
+      } else {
+        stocksData[stockIndex] = newValue;
+      }
+      jsonData["stocks"] = stocksData;
+      // Convert the updated array back to a JSON string
+      const updatedJsonString = JSON.stringify(jsonData, null, 2); // The `null, 2` argument formats the JSON with 2 spaces for readability
+      // Write the updated JSON back to the file
+      fs.writeFile(filePath, updatedJsonString, "utf8", (writeErr) => {
+        if (writeErr) {
+          console.error("Error writing JSON file:", writeErr);
+          res.status(500).send("Error writing JSON file");
+          return;
+        }
+        console.log("JSON file updated successfully.");
+        res.status(201).send("User data saved successfully");
+      });
     });
-  });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Error saving user data");
+  }
 };
 app.post("/stock", (req, res) => {
   const stock = req.body;
@@ -165,38 +175,43 @@ app.get("/statistics", (req, res) => {
 });
 
 const handleTransactions = (paramData, paramUsername, res) => {
-  // Specify the path to your JSON file
-  const filePath = `${__dirname}/transactions.json`;
+  try {
+    // Specify the path to your JSON file
+    const filePath = `${__dirname}/transactions.json`;
 
-  // Read the JSON file
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err) {
-      console.error("Error reading JSON file:", err);
-      res.status(500).send("Error reading JSON file");
-      return;
-    }
-
-    // Parse the JSON data into an object
-    const jsonData = JSON.parse(data);
-
-    // Modify a specific value (for example, change the value for a user named "user1")
-    jsonData[paramUsername] = paramData;
-
-    // Convert the updated object back to a JSON string
-    const updatedJsonString = JSON.stringify(jsonData, null, 2); // The `null, 2` argument formats the JSON with 2 spaces for readability
-
-    // Write the updated JSON back to the file
-    fs.writeFile(filePath, updatedJsonString, "utf8", (writeErr) => {
-      if (writeErr) {
-        console.error("Error writing JSON file:", writeErr);
-        res.status(500).send("Error writing JSON file");
+    // Read the JSON file
+    fs.readFile(filePath, "utf8", (err, data) => {
+      if (err) {
+        console.error("Error reading JSON file:", err);
+        res.status(500).send("Error reading JSON file");
         return;
       }
 
-      console.log("JSON file updated successfully.");
-      res.status(201).send("User data saved successfully");
+      // Parse the JSON data into an object
+      const jsonData = JSON.parse(data);
+
+      // Modify a specific value (for example, change the value for a user named "user1")
+      jsonData[paramUsername] = paramData;
+
+      // Convert the updated object back to a JSON string
+      const updatedJsonString = JSON.stringify(jsonData, null, 2); // The `null, 2` argument formats the JSON with 2 spaces for readability
+
+      // Write the updated JSON back to the file
+      fs.writeFile(filePath, updatedJsonString, "utf8", (writeErr) => {
+        if (writeErr) {
+          console.error("Error writing JSON file:", writeErr);
+          res.status(500).send("Error writing JSON file");
+          return;
+        }
+
+        console.log("JSON file updated successfully.");
+        res.status(201).send("User data saved successfully");
+      });
     });
-  });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Error saving user data");
+  }
 };
 
 app.post("/transactions", (req, res) => {
