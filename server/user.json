@@ -1,74 +1,46 @@
 {
-  "Abdelrahman": {
-    "name": "Abdelrahman",
-    "stocksCount": 432,
-    "money": 616,
-    "stocks": [
-      {
-        "name": "Apple",
-        "count": 192,
-        "price": 2
-      }
-    ],
-    "profit": {
-      "6:42:31": -1728,
-      "6:42:42": -2112,
-      "6:42:47": -2304,
-      "6:42:57": -1536,
-      "6:42:58": -1152,
-      "6:43:8": -1152,
-      "6:43:18": -1920
-    },
-    "role": "investor"
-  },
-  "admin": {
-    "name": "admin",
-    "role": "admin",
+  "ali": {
+    "name": "ali",
+    "role": "investor",
     "money": 0,
     "stocks": [],
     "profit": {},
     "stocksCount": 0
   },
-  "mohamed": {
-    "name": "mohamed",
+  "abdelrahman": {
+    "name": "abdelrahman",
     "role": "investor",
-    "money": 418,
+    "money": 0,
+    "stocks": [],
+    "profit": {},
+    "stocksCount": 0
+  },
+  "hello": {
+    "name": "hello",
+    "role": "investor",
+    "money": 11878,
     "stocks": [
       {
         "name": "Apple",
-        "count": 346,
-        "price": 2
-      },
-      {
-        "name": "Microsoft",
-        "count": 123,
+        "count": 122,
         "price": 2
       }
     ],
-    "profit": {
-      "6:48:53": -2968,
-      "6:49:0": -3337,
-      "6:49:24": -3829,
-      "6:49:39": -3014,
-      "6:49:49": -4890,
-      "6:49:59": -3629,
-      "6:50:7": -3629,
-      "6:52:25": 846,
-      "6:52:29": 3414,
-      "6:52:40": 2822,
-      "6:52:50": 1438,
-      "6:52:59": 1138,
-      "6:53:8": 1138,
-      "6:53:9": -2345,
-      "6:53:19": -4444,
-      "6:53:29": -5482,
-      "6:53:39": -6243,
-      "6:53:49": -6043,
-      "6:53:59": -6389,
-      "6:54:9": -8142,
-      "6:54:15": -8142,
-      "6:54:19": -9226
-    },
-    "stocksCount": 469
+    "profit": {},
+    "stocksCount": 122
+  },
+  "mohamed": {
+    "name": "mohamed",
+    "role": "investor",
+    "money": 1408,
+    "stocks": [
+      {
+        "name": "Apple",
+        "count": 912,
+        "price": 2
+      }
+    ],
+    "profit": {},
+    "stocksCount": 912
   }
 }

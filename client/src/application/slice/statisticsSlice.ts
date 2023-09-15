@@ -10,12 +10,28 @@ const initialState: {
   statistics: {
     investors: [
       {
-        name: "20-10-2023",
-        value: 10,
+        name: "09-15-2023",
+        value: 9,
       },
       {
-        name: "20-10-2024",
-        value: 20,
+        name: "09-15-2023",
+        value: 2,
+      },
+      {
+        name: "09-15-2023",
+        value: 3,
+      },
+      {
+        name: "09-15-2023",
+        value: 4,
+      },
+      {
+        name: "09-15-2023",
+        value: 5,
+      },
+      {
+        name: "09-15-2023",
+        value: 6,
       },
     ],
     transactions: [
@@ -26,6 +42,22 @@ const initialState: {
       {
         name: "20-10-2024",
         value: 220,
+      },
+      {
+        name: "09-15-2023",
+        value: 3,
+      },
+      {
+        name: "09-15-2023",
+        value: 4,
+      },
+      {
+        name: "09-15-2023",
+        value: 5,
+      },
+      {
+        name: "09-15-2023",
+        value: 6,
       },
     ],
     money: [

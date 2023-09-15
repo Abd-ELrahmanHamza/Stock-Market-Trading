@@ -58,9 +58,69 @@ const handleAddUser = (user, res) => {
     res.status(500).send("Error saving user data");
   }
 };
+
+const handleAddToStatistics = (statistic, value) => {
+  try {
+    // Specify the path to your JSON file
+    const filePath = `${__dirname}/statistics.json`;
+    // Read the JSON file
+    fs.readFile(filePath, "utf8", (err, data) => {
+      if (err && err.code !== "ENOENT") {
+        console.error("Error reading JSON file:", err);
+        return;
+      }
+      console.log(data);
+
+      const jsonData = JSON.parse(data);
+      console.log(jsonData);
+      const usersData = jsonData[statistic];
+      const date = new Date();
+      const dateString = date
+        .toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        })
+        .replace(/\//g, "-");
+      if (value) {
+        if (usersData.length >= 1) {
+          usersData.push({
+            name: dateString,
+            value: usersData[usersData.length - 1].value + value,
+          });
+        } else {
+          usersData.push({
+            name: dateString,
+            value: value,
+          });
+        }
+      } else {
+        usersData.push({
+          name: dateString,
+          value: usersData.length + 1,
+        });
+      }
+      jsonData[statistic] = usersData;
+      // Convert the updated array back to a JSON string
+      const updatedJsonString = JSON.stringify(jsonData, null, 2); // The `null, 2` argument formats the JSON with 2 spaces for readability
+      // Write the updated JSON back to the file
+      fs.writeFile(filePath, updatedJsonString, "utf8", (writeErr) => {
+        if (writeErr) {
+          console.error("Error writing JSON file:", writeErr);
+          return;
+        }
+        console.log("JSON file updated successfully.");
+      });
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 // Endpoint for user data
 app.post("/user", (req, res) => {
   const userData = req.body;
+  handleAddToStatistics("investors");
   handleAddUser(userData, res);
 });
 
@@ -217,6 +277,24 @@ const handleTransactions = (paramData, paramUsername, res) => {
 app.post("/transactions", (req, res) => {
   const transactions = req.body;
   // Save the user data to a file (e.g., users.json)
+  handleAddToStatistics("transactions");
+  if (
+    transactions.data &&
+    transactions.data.price &&
+    transactions.data.amount
+  ) {
+    if (transactions.data.type === "buy") {
+      handleAddToStatistics(
+        "money",
+        transactions.data.price * transactions.data.amount
+      );
+    } else {
+      handleAddToStatistics(
+        "money",
+        -transactions.data.price * transactions.data.amount
+      );
+    }
+  }
   handleTransactions(transactions.data, transactions.userName, res);
 });
 

@@ -88,42 +88,79 @@
     },
     {
       "company": "Apple",
-      "amount": 2,
-      "price": 2,
-      "date": "2023-09-15",
-      "type": "buy"
-    },
-    {
-      "company": "Microsoft",
-      "amount": 2,
-      "price": 2,
-      "date": "2023-09-15",
-      "type": "buy"
-    },
-    {
-      "company": "Microsoft4",
-      "amount": 4,
-      "price": 200,
-      "date": "2023-09-15",
-      "type": "buy"
-    },
-    {
-      "company": "Apple",
-      "amount": 12,
+      "amount": 122,
       "price": 2,
       "date": "2023-09-15",
       "type": "buy"
     },
     {
       "company": "Apple",
-      "amount": 334,
+      "amount": 345,
       "price": 2,
       "date": "2023-09-15",
       "type": "buy"
     },
     {
-      "company": "Microsoft",
+      "company": "Apple",
+      "amount": 444,
+      "price": 2,
+      "date": "2023-09-15",
+      "type": "buy"
+    },
+    {
+      "company": "Apple",
       "amount": 123,
+      "price": 2,
+      "date": "2023-09-15",
+      "type": "buy"
+    }
+  ],
+  "hello": [
+    {
+      "company": "Apple",
+      "amount": 32,
+      "price": 2,
+      "date": "2023-09-15",
+      "type": "buy"
+    },
+    {
+      "company": "Apple",
+      "amount": 32,
+      "price": 2,
+      "date": "2023-09-15",
+      "type": "buy"
+    },
+    {
+      "company": "Apple",
+      "amount": 32,
+      "price": 2,
+      "date": "2023-09-15",
+      "type": "buy"
+    },
+    {
+      "company": "Apple",
+      "amount": 32,
+      "price": 2,
+      "date": "2023-09-15",
+      "type": "buy"
+    },
+    {
+      "company": "Apple",
+      "amount": 32,
+      "price": 2,
+      "date": "2023-09-15",
+      "type": "buy"
+    },
+    {
+      "company": "Apple",
+      "amount": 32,
+      "price": 2,
+      "date": "2023-09-15",
+      "type": "buy"
+    },
+    {
+      "company": "Apple",
+      "amount": 122,
       "price": 2,
       "date": "2023-09-15",
       "type": "buy"
