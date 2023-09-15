@@ -15,7 +15,7 @@ npm install
 npm start
 ```
 
-- If you want to syc data between admin and investor, you need to run server.
+- If you want to sync data between admin and investor, you need to run the server.
 
 - If not, you can run client only.
 
