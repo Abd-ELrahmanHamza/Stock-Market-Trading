@@ -10,4 +10,8 @@ function formatNumber(num: number): string {
   }
 }
 
-export { formatNumber };
+function isStringNumeric(input: string): boolean {
+  return !isNaN(parseFloat(input)) && isFinite(Number(input));
+}
+
+export { formatNumber, isStringNumeric };

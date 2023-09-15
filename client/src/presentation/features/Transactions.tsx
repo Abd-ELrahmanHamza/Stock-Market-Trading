@@ -83,7 +83,9 @@ export default function Transactions({
                 Math.min(page * rowsPerPage + rowsPerPage, transactions.length)
               )
               .map((row) => (
-                <StyledTableRow key={row.company}>
+                <StyledTableRow
+                  key={row.company + row.date + row.price + row.type}
+                >
                   <StyledTableCell component="th" scope="row">
                     {row.company}
                   </StyledTableCell>

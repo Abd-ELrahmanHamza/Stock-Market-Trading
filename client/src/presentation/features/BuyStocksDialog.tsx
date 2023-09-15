@@ -7,7 +7,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Stock from "../../domain/entities/stock";
 import { Box, TextField } from "@mui/material";
 import { useAppSelector } from "../../application/hooks";
-import { ErrorAlert } from "../components/Alerts";
+import { ErrorAlert, InfoAlert } from "../components/Alerts";
+import { isStringNumeric } from "../../application/utils/helper";
 
 interface BuyStocksDialogProps {
   handleClose: () => void;
@@ -23,32 +24,45 @@ export default function BuyStocksDialog({
   actionText,
   stock,
 }: BuyStocksDialogProps) {
-  const [count, setCount] = React.useState<number>(0);
+  const [count, setCount] = React.useState<string>("0");
   const user = useAppSelector((state) => state.user);
   const [errorMessage, setErrorMessage] = React.useState<string>("");
+  const [infoMessage, setInfoMessage] = React.useState<string>("");
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCount(parseInt(event.target.value));
+    if (event.target.value === "") return setCount("");
+    if (!isStringNumeric(event.target.value)) return;
+    if (parseInt(event.target.value) < 0) return;
+    if (parseInt(event.target.value) > stock.count) {
+      setCount(stock.count.toString());
+      setInfoMessage(
+        "Max number of stocks to " + actionText + " is " + stock.count
+      );
+      return;
+    }
+    setCount(event.target.value);
   };
+
   const handleAgree = () => {
     if (actionText === "Buy") {
       console.log("here");
-      if (count * stock.price > user.money) {
+      if (parseInt(count) * stock.price > user.money) {
         setErrorMessage("You don't have enough money Go to wallet to add more");
         return;
       }
 
-      if (count > stock.count) {
+      if (parseInt(count) > stock.count) {
         setErrorMessage("No enough stocks to buy");
         return;
       }
     } else {
-      if (count > stock.count) {
+      if (parseInt(count) > stock.count) {
         setErrorMessage("No enough stocks to sell");
         return;
       }
     }
     setErrorMessage("");
-    handleAction({ ...stock, count: count });
+    handleAction({ ...stock, count: parseInt(count) });
     handleClose();
   };
   return (
@@ -93,6 +107,15 @@ export default function BuyStocksDialog({
               }}
             >
               <ErrorAlert text={errorMessage} />
+            </Box>
+          )}
+          {infoMessage && (
+            <Box
+              sx={{
+                marginTop: "1rem",
+              }}
+            >
+              <InfoAlert text={infoMessage} />
             </Box>
           )}
         </DialogContent>
