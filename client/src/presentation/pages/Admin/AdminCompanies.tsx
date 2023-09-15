@@ -140,9 +140,14 @@ const AdminCompanies = () => {
         }}
       >
         {selectedCompany && companyStockRecords ? (
-          <CenterBox>
-            <LineChart dataSet={companyStockRecords} />
-          </CenterBox>
+          <>
+            <Typography variant="h5" textAlign={"center"}>
+              Stocks of {selectedCompany} (Updated every 10s)
+            </Typography>
+            <CenterBox>
+              <LineChart dataSet={companyStockRecords} />
+            </CenterBox>
+          </>
         ) : (
           <InfoAlert text={`Select a company to show it's stocks`} />
         )}

@@ -1,26 +1,24 @@
-import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import styled from "@mui/material/styles/styled";
-
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 const UserContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-end",
   padding: "0.5rem 0.7rem",
-  backgroundImage: `linear-gradient(45deg, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`,
-  borderRadius: "1rem",
+  borderRadius: "2rem",
   boxShadow: "",
 }));
 
 const UserName = styled(Typography)(({ theme }) => ({
   marginLeft: theme.spacing(2),
-  color: theme.palette.common.white,
+  color: theme.palette.common.black,
 }));
 
-const UserAvatar = styled(Avatar)(({ theme }) => ({
-  backgroundColor: theme.palette.common.white,
-  boxShadow: theme.shadows[2],
+const UserAvatar = styled(AccountCircleIcon)(({ theme }) => ({
+  borderRadius: "50%",
+  fontSize: "2.5rem",
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
@@ -32,7 +30,7 @@ interface UserProps {
 const User = ({ source, userName }: UserProps) => {
   return (
     <UserContainer>
-      <UserAvatar alt="Profile Picture" src={source} />
+      <UserAvatar />
       <UserName variant="h6">{userName}</UserName>
     </UserContainer>
   );
