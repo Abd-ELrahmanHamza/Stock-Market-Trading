@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import { Card } from "../components/Card";
 import { CustomTablePagination } from "../components/CustomTablePagination";
 import Stock from "../../domain/entities/stock";
+import BuyStocksDialog from "./BuyStocksDialog";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     color: theme.palette.primary.main,
@@ -49,8 +50,26 @@ export default function Stocks({
     setPage(0);
   };
 
+  const [openDialog, setOpenDialog] = React.useState<boolean>(false);
+  const [selectedStock, setSelectedStock] = React.useState<Stock>(stocks[0]);
+  const handleDialogOpen = (_: React.SyntheticEvent, stock: Stock) => {
+    setOpenDialog(true);
+    setSelectedStock(stock);
+  };
+
+  const handleDialogClose = () => {
+    setOpenDialog(false);
+  };
+
   return (
     <Card>
+      <BuyStocksDialog
+        open={openDialog}
+        handleClose={handleDialogClose}
+        handleAction={handleAction}
+        actionText={actionText}
+        stock={selectedStock}
+      />
       <CustomTablePagination
         rowsPerPageOptions={[4, 10, 25]}
         count={stocks.length}
@@ -93,7 +112,10 @@ export default function Stocks({
                   {ActionComponent && (
                     <StyledTableCell align="right">
                       <ActionComponent
-                        props={{ onClick: () => handleAction(stock) }}
+                        props={{
+                          onClick: (e: React.SyntheticEvent) =>
+                            handleDialogOpen(e, stock),
+                        }}
                       >
                         {actionText}
                       </ActionComponent>

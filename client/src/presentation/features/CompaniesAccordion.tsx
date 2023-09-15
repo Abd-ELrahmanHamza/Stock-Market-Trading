@@ -17,6 +17,7 @@ import { BuyButton } from "../components/Button";
 import styled from "@mui/material/styles/styled";
 import { CustomTablePagination } from "../components/CustomTablePagination";
 import Stock from "../../domain/entities/stock";
+import { useNavigate } from "react-router-dom";
 
 const ActionContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -31,6 +32,7 @@ interface Props {
   handleSelectCompany: (company: string) => void;
 }
 const CompaniesAccordion = ({ stocks, handleSelectCompany }: Props) => {
+  const navigate = useNavigate();
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(4);
@@ -100,7 +102,13 @@ const CompaniesAccordion = ({ stocks, handleSelectCompany }: Props) => {
                   </TableBody>
                 </Table>
                 <ActionContainer>
-                  <BuyButton props={{}}>Buy</BuyButton>
+                  <BuyButton
+                    props={{
+                      onClick: () => navigate(`/investor/stocks`),
+                    }}
+                  >
+                    Buy
+                  </BuyButton>
                 </ActionContainer>
               </TableContainer>
             </AccordionDetails>

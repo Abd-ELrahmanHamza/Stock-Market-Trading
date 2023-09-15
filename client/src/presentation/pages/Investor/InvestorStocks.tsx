@@ -43,6 +43,7 @@ const InvestorStocks = () => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
   return (
     <Box>
       <IconTabs value={value} handleChange={handleChange} />

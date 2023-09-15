@@ -1,16 +1,16 @@
 {
   "Abdelrahman": [
     {
-      "company": "Google",
-      "amount": 22,
+      "company": "Apple",
+      "amount": 100,
       "price": 2,
       "date": "2023-09-14",
       "type": "buy"
     },
     {
-      "company": "Facebook",
+      "company": "Microsoft4",
       "amount": 2,
-      "price": 2,
+      "price": 200,
       "date": "2023-09-14",
       "type": "buy"
     }
@@ -179,6 +179,31 @@
       "amount": 2,
       "price": 2,
       "date": "2023-09-14",
+      "type": "buy"
+    }
+  ],
+  "maisa": [
+    {
+      "company": "Apple",
+      "amount": 26,
+      "price": 2,
+      "date": "2023-09-15",
+      "type": "buy"
+    }
+  ],
+  "newnew": [
+    {
+      "company": "Apple",
+      "amount": 26,
+      "price": 2,
+      "date": "2023-09-15",
+      "type": "buy"
+    },
+    {
+      "company": "Apple",
+      "amount": 156,
+      "price": 2,
+      "date": "2023-09-15",
       "type": "buy"
     }
   ]

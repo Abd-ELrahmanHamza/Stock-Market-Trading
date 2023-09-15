@@ -14,6 +14,7 @@ import { NavLink } from "../components/Link";
 import { Constants } from "../theme/theme";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/images/logo.svg";
+import { useNavigate } from "react-router-dom";
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: Constants.drawerWidth,
@@ -92,6 +93,7 @@ interface SidebarProps {
   }[];
 }
 const Sidebar = ({ open, toggleDrawer, navigationList }: SidebarProps) => {
+  const navigate = useNavigate();
   return (
     <Drawer variant="permanent" open={open}>
       <DrawerHeader>
@@ -114,7 +116,7 @@ const Sidebar = ({ open, toggleDrawer, navigationList }: SidebarProps) => {
       </List>
       <LogoutList>
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={() => navigate("/")}>
             <ListItemIcon>
               <LogoutIcon />
             </ListItemIcon>
