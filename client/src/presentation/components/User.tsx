@@ -8,9 +8,8 @@ const UserContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: "0.5rem 0.7rem",
-  backgroundColor: theme.palette.primary.main,
+  backgroundImage: `linear-gradient(45deg, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`,
   borderRadius: "1rem",
-  cursor: "pointer",
   boxShadow: "",
 }));
 

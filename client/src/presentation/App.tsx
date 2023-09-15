@@ -1,7 +1,6 @@
 import { RouterProvider } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./theme/theme";
-
 import { store } from "../application/store";
 import { Provider } from "react-redux";
 import router from "./routes";

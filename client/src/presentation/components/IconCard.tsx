@@ -4,12 +4,12 @@ import styled from "@mui/material/styles/styled";
 const StyledBox = styled(Grid)<{ isGradient?: boolean }>(
   ({ theme, isGradient }) => ({
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    padding: theme.spacing(3),
-    maxHeight: "10rem",
     flexWrap: "wrap",
+    padding: theme.spacing(3),
+    // maxHeight: "10rem",
     backgroundImage: isGradient
       ? `linear-gradient(45deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.light} 100%)`
       : "none",
@@ -25,9 +25,10 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
 const BoxItem = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "flex-end",
-  alignItems: "flex-end",
+  alignItems: "center",
   flexDirection: "column",
   padding: theme.spacing(2),
+  flex: 1,
 }));
 
 interface IconCardProps {

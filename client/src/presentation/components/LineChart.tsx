@@ -15,6 +15,10 @@ const ChartContainer = styled(Box)(({ theme }) => ({
   marginBottom: "1rem",
   marginTop: "1rem",
   width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
 }));
 const LineChart = ({
   dataSet,

@@ -10,6 +10,7 @@ import { addProfitUtil } from "../../../application/utils/user";
 import CenterBox from "../../components/CenterBox";
 import { BuyButton } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import { formatNumber } from "../../../application/utils/helper";
 const StyledGrid = styled(Grid)(({ theme }) => ({
   marginBottom: theme.spacing(2),
 }));
@@ -60,7 +61,7 @@ const InvestorDashboard = () => {
         <Grid item xs={1} md={1}>
           <StyledGrid container spacing={3} columns={{ sm: 2, md: 1 }}>
             <StyledCardGrid item xs={1} md={1}>
-              <WalletCard text={user.money.toString()} />
+              <WalletCard text={formatNumber(user.money).toString()} />
             </StyledCardGrid>
             <StyledCardGrid item xs={1} md={1}>
               <StocksCard text={user.stocksCount.toString()} />
@@ -71,6 +72,7 @@ const InvestorDashboard = () => {
           <Card>
             {performanceDataGraph && performanceDataGraph.length !== 0 && (
               <>
+                <Typography variant="h4">Performance</Typography>
                 <AreaChart dataSet={performanceDataGraph} />
               </>
             )}

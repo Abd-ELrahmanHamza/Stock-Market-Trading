@@ -9,7 +9,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box, Typography } from "@mui/material";
 import { CustomTablePagination } from "../components/CustomTablePagination";
-import { useAppSelector } from "../../application/hooks";
 import { Transaction } from "../../domain/entities/transactions";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({

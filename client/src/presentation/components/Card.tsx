@@ -17,6 +17,7 @@ const StyledNoPadCard = styled(Paper)(({ theme }) => ({
   borderRadius: "1rem",
   boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
   overflow: "hidden",
+  height: "100%",
 }));
 
 interface CardProps {
