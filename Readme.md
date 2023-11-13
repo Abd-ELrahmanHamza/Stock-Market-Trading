@@ -19,19 +19,6 @@ Discover Stock Market Trading a React.js web app for easy portfolio management a
 
 ## Features
 
-### Admin View
-
-1. **Add New Stocks**
-
-   - The admin can seamlessly add new stocks for companies, specifying their initial price per share.
-
-2. **Transaction Log Review**
-
-   - Dive into the transaction logs of a specific investor to gain insights into their trading activities.
-
-3. **Platform Statistics**
-   - Access overall statistics for the platform, including the number of registered investors, transaction history, amount of money transferred over time, and other relevant metrics.
-
 ### Investor View
 
 1. **Stock Value Trends**
@@ -52,6 +39,34 @@ Discover Stock Market Trading a React.js web app for easy portfolio management a
 
 5. **Transaction Statistics**
    - Investors can review detailed statistics for their previous transactions, including gains, losses, and any other relevant metrics.
+
+![Investor 1](screenshots/user-1.png)
+
+![Investor 2](screenshots/user-2.jpeg)
+
+![Investor 3](screenshots/user-3.jpeg)
+
+![Investor 4](screenshots/user-4.jpeg)
+
+![login](screenshots/login.png)
+### Admin View
+
+1. **Add New Stocks**
+
+   - The admin can seamlessly add new stocks for companies, specifying their initial price per share.
+
+2. **Transaction Log Review**
+
+   - Dive into the transaction logs of a specific investor to gain insights into their trading activities.
+
+3. **Platform Statistics**
+   - Access overall statistics for the platform, including the number of registered investors, transaction history, amount of money transferred over time, and other relevant metrics.
+
+![Investor 1](screenshots/admin-1.png)
+
+![Investor 2](screenshots/admin-2.jpeg)
+
+![Investor 3](screenshots/admin-3.png)
 
 ## Getting Started
 
